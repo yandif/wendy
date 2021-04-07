@@ -1,11 +1,7 @@
 /// <reference path="./deployctl.d.ts" />
-import * as path from "https://deno.land/std@0.92.0/path/mod.ts";
 
-const __dirname = path.dirname(path.fromFileUrl(import.meta.url));
-
-addEventListener("fetch", (event: FetchEvent) => {
-  
-  const str: string =`<!DOCTYPE html>
+addEventListener("fetch", (event: FetchEvent) => {  
+  const str =`<!DOCTYPE html>
 <html lang="en">
 
 <head>
