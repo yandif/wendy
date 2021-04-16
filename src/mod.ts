@@ -21,6 +21,7 @@ addEventListener("fetch", (event: FetchEvent) => {
     width: 100vw;
     height: 100vh;
     display: flex;
+    flex-direction:column;
     align-items: center;
     justify-content: center;
     background-color: rgb(218, 218, 28);
@@ -31,12 +32,17 @@ addEventListener("fetch", (event: FetchEvent) => {
     font-weight: bold;
     color: white;
   }
-
+  h6 {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+  }
 </style>
 
 <body>
   <div class="app">
     <h1>Wendy</h1>
+    <h6>试一下 Deno deploy</h6>
   </div>
 </body>
 
