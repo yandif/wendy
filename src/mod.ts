@@ -27,7 +27,7 @@ addEventListener("fetch", (event: FetchEvent) => {
   }
 
   h1 {
-    font-size: 80px;
+    font-size: 81px;
     font-weight: bold;
     color: white;
   }
