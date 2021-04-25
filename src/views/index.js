@@ -1,7 +1,7 @@
 export default function () {
   return new Response(
     `
-<!DOCTYPE html>
+    <!DOCTYPE html>
 
 <html lang="en">
 
