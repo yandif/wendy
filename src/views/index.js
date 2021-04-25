@@ -1,7 +1,7 @@
 export default function () {
   return new Response(
     `
-    <!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en">
 
@@ -68,6 +68,7 @@ export default function () {
     <h6>fetch远程资源 ： <a href="/cat/600/600">cat</a></h6>
     <h6>ip地址 ： <a href="/ip">ip</a></h6>
     <h6>json ： <a href="/json">json</a></h6>
+    <h6>jsx ： <a href="/jsx">jsx</a></h6>
     <h6>github：<a href="https://github.com/yandif/wendy">github</a></h6>
   </div>
 
