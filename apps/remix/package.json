@@ -1,0 +1,51 @@
+{
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "build": "cross-env NODE_ENV=production remix build",
+    "dev": "cross-env NODE_ENV=development remix dev",
+    "start": "cross-env NODE_ENV=production remix-serve build",
+    "prisma:seed": "esno ./prisma/seed.ts"
+  },
+  "dependencies": {
+    "@dnd-kit/core": "^6.0.8",
+    "@emotion/react": "^11.10.6",
+    "@emotion/server": "^11.10.0",
+    "@mantine/core": "^6.0.1",
+    "@mantine/hooks": "^6.0.1",
+    "@mantine/remix": "^6.0.1",
+    "@mantine/spotlight": "^6.0.1",
+    "@prisma/client": "^4.11.0",
+    "@remix-run/node": "^1.14.0",
+    "@remix-run/react": "^1.14.0",
+    "@remix-run/serve": "^1.14.0",
+    "csstype": "^3.1.1",
+    "dayjs": "^1.11.7",
+    "isbot": "^3.6.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.0",
+    "tabler-icons-react": "^1.56.0",
+    "zustand": "^4.3.6"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^1.14.0",
+    "@remix-run/eslint-config": "^1.14.0",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.35.0",
+    "esno": "^0.16.3",
+    "prisma": "^4.11.0",
+    "typescript": "^4.9.5"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [],
+      "allowedVersions": {}
+    }
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
