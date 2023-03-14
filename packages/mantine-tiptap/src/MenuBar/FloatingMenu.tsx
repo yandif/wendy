@@ -1,10 +1,10 @@
 import { Button, createStyles, Group, Paper } from '@mantine/core';
 import { FloatingMenu as DefaultFloatingMenu } from '@tiptap/react';
+import React from 'react';
 import { List, ListNumbers } from 'tabler-icons-react';
-
 import useTool from './hooks/useTool';
 
-const useStyles = createStyles((theme) => {
+const useStyles = createStyles(() => {
   return {
     item: {
       opacity: '0.3',

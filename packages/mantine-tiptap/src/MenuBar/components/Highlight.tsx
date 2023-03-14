@@ -5,10 +5,10 @@ import {
   DEFAULT_THEME,
   Popover,
 } from '@mantine/core';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Highlight as HighlightIcon } from 'tabler-icons-react';
 
-const useStyles = createStyles((theme) => {
+const useStyles = createStyles(() => {
   return {
     item: {
       opacity: '0.3',
@@ -58,12 +58,14 @@ function Highlight({ editor }: { editor: any }) {
     editor.chain().focus().toggleHighlight({ color: value }).run();
     setOpened(false);
   };
-
   return (
     <Popover
       opened={opened}
       onClose={() => setOpened(false)}
-      target={
+      width={200}
+      position="bottom-start"
+      transitionProps={{ duration: 150, transition: 'fade' }}>
+      <Popover.Target>
         <Button
           key="背景色"
           variant="default"
@@ -79,29 +81,23 @@ function Highlight({ editor }: { editor: any }) {
             <HighlightIcon size={16} />
           </div>
         </Button>
-      }
-      width={200}
-      position="bottom"
-      placement="start"
-      transition="fade"
-      styles={{
-        wrapper: { marginTop: '-6px' },
-      }}
-      p={0}>
-      <ColorPicker
-        format="hex"
-        value={color}
-        onChange={handleChange}
-        withPicker={false}
-        fullWidth
-        swatchesPerRow={7}
-        swatches={[
-          ...pickColor(DEFAULT_THEME.colors.red),
-          ...pickColor(DEFAULT_THEME.colors.yellow),
-          ...pickColor(DEFAULT_THEME.colors.green),
-          ...pickColor(DEFAULT_THEME.colors.blue),
-        ]}
-      />
+      </Popover.Target>
+      <Popover.Dropdown sx={{ pointerEvents: 'none' }}>
+        <ColorPicker
+          format="hex"
+          value={color}
+          onChange={handleChange}
+          withPicker={false}
+          fullWidth
+          swatchesPerRow={7}
+          swatches={[
+            ...pickColor(DEFAULT_THEME.colors.red),
+            ...pickColor(DEFAULT_THEME.colors.yellow),
+            ...pickColor(DEFAULT_THEME.colors.green),
+            ...pickColor(DEFAULT_THEME.colors.blue),
+          ]}
+        />
+      </Popover.Dropdown>
     </Popover>
   );
 }

@@ -24,7 +24,7 @@ import {
   setErrorMessage,
   setSuccessMessage,
 } from '~/server/middleware/message.server';
-import EngineDemo from '~/web/components/Editor';
+// import EngineDemo from '@wendy/mantine-tiptap';
 import { dropzoneChildren } from '~/web/components/Upload/ImgUpload';
 import { useTitle } from '~/web/hooks/useTitle';
 
@@ -211,10 +211,10 @@ export default function CreateArticle() {
               required
               label="内容"
               {...form.getInputProps('content')}>
-              <EngineDemo
+              {/* <EngineDemo
                 placeholder="文章内容"
                 {...form.getInputProps('content')}
-              />
+              /> */}
             </Input.Wrapper>
           </fetcher.Form>
         </Container>

@@ -1,10 +1,10 @@
 import { Button, createStyles, Group, Paper } from '@mantine/core';
 import { BubbleMenu as DefaultBubbleMenu } from '@tiptap/react';
 import { Bold, Italic, Strikethrough } from 'tabler-icons-react';
-
+import React from 'react';
 import useTool from './hooks/useTool';
 
-const useStyles = createStyles((theme) => {
+const useStyles = createStyles(() => {
   return {
     item: {
       opacity: '0.3',

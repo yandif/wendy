@@ -1,6 +1,5 @@
 import type { Sx } from '@mantine/core';
 
-/* eslint-disable quotes */
 export function lightTheme(): Sx {
   return {
     "code[class*='language-'], pre[class*='language-']": {

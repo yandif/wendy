@@ -1,6 +1,4 @@
-import os from 'os';
-import path from 'path';
-import { defineConfig, splitVendorChunkPlugin } from 'vite';
+import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
 // https://vitejs.dev/config/
@@ -11,8 +9,8 @@ export default defineConfig({
   build: {
     target: 'es2015',
     lib: {
-      name: 'kitCore',
-      entry: './src/index.ts',
+      name: 'MantineTiptapEditor',
+      entry: './src/index.tsx',
       fileName: 'index',
     },
     rollupOptions: {

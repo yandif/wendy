@@ -5,10 +5,10 @@ import {
   DEFAULT_THEME,
   Popover,
 } from '@mantine/core';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { ColorPicker as ColorPickerIcon } from 'tabler-icons-react';
 
-const useStyles = createStyles((theme) => {
+const useStyles = createStyles(() => {
   return {
     item: {
       opacity: '0.3',
@@ -59,7 +59,10 @@ function Color({ editor }: { editor: any }) {
     <Popover
       opened={opened}
       onClose={() => setOpened(false)}
-      target={
+      width={200}
+      position="bottom-start"
+      transitionProps={{ duration: 150, transition: 'fade' }}>
+      <Popover.Target>
         <Button
           key="颜色"
           variant="default"
@@ -71,29 +74,23 @@ function Color({ editor }: { editor: any }) {
           }}>
           <ColorPickerIcon size={16} />
         </Button>
-      }
-      width={200}
-      position="bottom"
-      placement="start"
-      transition="fade"
-      styles={{
-        wrapper: { marginTop: '-6px' },
-      }}
-      p={0}>
-      <ColorPicker
-        format="hex"
-        value={color}
-        onChange={handleChange}
-        withPicker={false}
-        fullWidth
-        swatchesPerRow={7}
-        swatches={[
-          ...pickColor(DEFAULT_THEME.colors.dark),
-          ...pickColor(DEFAULT_THEME.colors.gray),
-          ...pickColor(DEFAULT_THEME.colors.orange),
-          ...pickColor(DEFAULT_THEME.colors.lime),
-        ]}
-      />
+      </Popover.Target>
+      <Popover.Dropdown sx={{ pointerEvents: 'none' }}>
+        <ColorPicker
+          format="hex"
+          value={color}
+          onChange={handleChange}
+          withPicker={false}
+          fullWidth
+          swatchesPerRow={7}
+          swatches={[
+            ...pickColor(DEFAULT_THEME.colors.dark),
+            ...pickColor(DEFAULT_THEME.colors.gray),
+            ...pickColor(DEFAULT_THEME.colors.orange),
+            ...pickColor(DEFAULT_THEME.colors.lime),
+          ]}
+        />
+      </Popover.Dropdown>
     </Popover>
   );
 }

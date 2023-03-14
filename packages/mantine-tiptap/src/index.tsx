@@ -15,9 +15,8 @@ import underline from '@tiptap/extension-underline';
 import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import _ from 'lodash';
-import type { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { Capture } from 'tabler-icons-react';
-
 import { CodeBlockRefractor } from './Plugin/CodeBlockRefractor';
 import { Image } from './Plugin/image';
 import { darkTheme, lightTheme } from './theme';
@@ -180,7 +179,7 @@ const editorStyle: Sx = (theme: MantineTheme) => {
 
 const useStyles = createStyles(() => ({}));
 
-export default function Editor(
+function Editor(
   props: PaperProps & {
     name?: string;
     value?: string;
@@ -287,3 +286,17 @@ export default function Editor(
     </div>
   );
 }
+function EditorServer(
+  _props: PaperProps & {
+    name?: string;
+    value?: string;
+    error?: ReactNode | string;
+    placeholder?: string;
+    autofocus?: boolean;
+    onChange: (val: string) => any;
+  },
+) {
+  return null;
+}
+const isClient = typeof document !== 'undefined';
+export default isClient ? Editor : EditorServer;

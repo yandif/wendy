@@ -1,5 +1,7 @@
 node_modules
 .cache
 build
+dist
+lib
 .env
 apps/remix/public/img

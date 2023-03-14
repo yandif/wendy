@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 import { Button, createStyles, Group, Paper } from '@mantine/core';
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 import {
   AlignCenter,
   AlignJustified,
@@ -23,7 +23,6 @@ import {
   Superscript,
   Underline,
 } from 'tabler-icons-react';
-
 import Color from './components/Colorx';
 import HeaderAndParagraph from './components/HeaderAndParagraph';
 import Hightlight from './components/Highlight';
@@ -31,7 +30,7 @@ import Image from './components/Image';
 import LinkMenu from './components/Link';
 import useTool from './hooks/useTool';
 
-const useStyles = createStyles((theme) => {
+const useStyles = createStyles(() => {
   return {
     main: {
       paddingTop: 80,

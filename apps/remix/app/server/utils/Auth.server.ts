@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+import CryptoJS from 'crypto-js';
 
 import base64 from './Base64.server';
 /**
@@ -54,8 +54,7 @@ export default class Auth {
     // 1.将密码与加密的随机数拼接
     const newPwd = base64RandomStr + password;
     // 2.将第二步进行md5加密
-    const md5 = crypto.createHash('md5');
-    const md5Pwd = md5.update(newPwd).digest('hex');
+    const md5Pwd = CryptoJS.MD5(newPwd).toString();
     // 3.将加密后的md5Pwd继续加密
     const base64Md5 = base64.encode(md5Pwd);
     // 4.继续将1和3拼接

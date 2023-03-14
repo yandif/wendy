@@ -1,8 +1,8 @@
 import { Button, createStyles, Popover } from '@mantine/core';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link as LinkIcon } from 'tabler-icons-react';
 
-const useStyles = createStyles((theme) => {
+const useStyles = createStyles(() => {
   return {
     item: {
       opacity: '0.3',
@@ -32,12 +32,14 @@ function LinkMenu({ editor }: { editor: any }) {
   };
 
   const isImage = editor.isActive('link');
-
   return (
     <Popover
       opened={opened}
       onClose={() => setOpened(false)}
-      target={
+      width={200}
+      position="bottom-start"
+      transitionProps={{ duration: 150, transition: 'fade' }}>
+      <Popover.Target>
         <Button
           key="链接"
           variant="default"
@@ -46,28 +48,22 @@ function LinkMenu({ editor }: { editor: any }) {
           px={9}>
           <LinkIcon size={16} />
         </Button>
-      }
-      width={200}
-      position="bottom"
-      placement="start"
-      transition="fade"
-      styles={{
-        wrapper: { marginTop: '-6px' },
-      }}
-      p={0}>
-      <Button
-        onClick={() => {
-          // toggleLink
-          editor
-            .chain()
-            .focus()
-            .setLink({
-              href: 'https://yandif.com',
-            })
-            .run();
-        }}>
-        设置链接
-      </Button>
+      </Popover.Target>
+      <Popover.Dropdown sx={{ pointerEvents: 'none' }}>
+        <Button
+          onClick={() => {
+            // toggleLink
+            editor
+              .chain()
+              .focus()
+              .setLink({
+                href: 'https://yandif.com',
+              })
+              .run();
+          }}>
+          设置链接
+        </Button>
+      </Popover.Dropdown>
     </Popover>
   );
 }
