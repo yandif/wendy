@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import { checkAuth } from '~/server/middleware/auth.server';
 import { Message } from '~/server/middleware/message.server';
 import { CreateTag } from '~/server/models/tag.server';
-import { dropzoneChildren } from '~/web/components/Upload/ImgUpload';
+import { UploadImage } from '~/web/components/Upload/ImgUpload';
 
 import { imageRoute } from './admin.image';
 
@@ -34,9 +34,11 @@ export const action: ActionFunction = async ({ request }) => {
   await CreateTag({ name, description, userId: user.id });
   return await message.success('新建成功', { redirect: imageRoute });
 };
+
 const useStyles = createStyles((theme) => {
   return {};
 });
+
 export default function Add() {
   const { theme } = useStyles();
 
@@ -65,7 +67,7 @@ export default function Add() {
 
   return (
     <Modal opened title="新建图片" onClose={() => nav(imageRoute)}>
-      <Dropzone
+      <UploadImage
         p={2}
         loading={imgFetcher.state === 'loading'}
         multiple={false}
@@ -74,9 +76,9 @@ export default function Add() {
         accept={IMAGE_MIME_TYPE}
         onReject={() => {
           toast.error('图片不能大于5M');
-        }}>
-        {(status) => dropzoneChildren(status, theme, coverSrc)}
-      </Dropzone>
+        }}
+        imgSrc={coverSrc}
+      />
     </Modal>
   );
 }

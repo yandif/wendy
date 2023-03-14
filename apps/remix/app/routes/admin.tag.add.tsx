@@ -22,6 +22,7 @@ export const action: ActionFunction = async ({ request }) => {
 
   const formData = await request.formData();
   const name = formData.get('name') as string;
+  const redirect = formData.get('redirect') as string;
   const description = (formData.get('description') as string) || '';
 
   if (!name) {
@@ -29,12 +30,12 @@ export const action: ActionFunction = async ({ request }) => {
   }
 
   await CreateTag({ name, description, userId: user.id });
-  return await message.success('新建成功', { redirect: tagRoute });
+  return await message.success('新建成功', { redirect });
 };
 
 export default function Add() {
   const form = useForm({
-    initialValues: { name: '', description: '' },
+    initialValues: { name: '', description: '', redirect: tagRoute },
 
     validate: {
       name: (value) => (value?.length === 0 ? '请输入名称' : null),

@@ -1,44 +1,15 @@
-import type { MantineTheme } from '@mantine/core';
-import { Group, Image, Text } from '@mantine/core';
-import type { DropzoneStatus } from '@mantine/dropzone';
-import type { Icon } from '@tabler/icons-react';
+import { Group, Image, rem, Text, useMantineTheme } from '@mantine/core';
+import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE } from '@mantine/dropzone';
 import { IconPhoto, IconUpload, IconX } from '@tabler/icons-react';
 
-function getIconColor(status: DropzoneStatus, theme: MantineTheme) {
-  if (status.accepted) {
-    return theme.colors[theme.primaryColor][
-      theme.colorScheme === 'dark' ? 4 : 6
-    ];
-  }
-  if (status.rejected) {
-    return theme.colors.red[theme.colorScheme === 'dark' ? 4 : 6];
-  }
-  if (theme.colorScheme === 'dark') {
-    return theme.colors.dark[0];
-  }
-  return theme.colors.gray[5];
-}
-
-function ImageUploadIcon({
-  status,
-  ...props
-}: React.ComponentProps<Icon> & { status: DropzoneStatus }) {
-  if (status.accepted) {
-    return <IconUpload {...props} />;
-  }
-
-  if (status.rejected) {
-    return <IconX {...props} />;
-  }
-
-  return <IconPhoto {...props} />;
-}
-export const dropzoneChildren = (
-  status: DropzoneStatus,
-  theme: MantineTheme,
-  imgSrc: string | undefined,
-) => {
-  if (imgSrc) {
+export function UploadImage(
+  props: Partial<DropzoneProps> & {
+    imgSrc: string | undefined;
+  },
+) {
+  const theme = useMantineTheme();
+  
+  if (props.imgSrc) {
     return (
       <Image
         styles={{
@@ -46,7 +17,7 @@ export const dropzoneChildren = (
           placeholder: { minHeight: 120 },
         }}
         radius="sm"
-        src={imgSrc}
+        src={props.imgSrc}
         alt="背景图片"
         withPlaceholder
         placeholder={'图片不存在'}
@@ -55,21 +26,44 @@ export const dropzoneChildren = (
   }
 
   return (
-    <Group
-      position="center"
-      spacing="xl"
-      style={{ minHeight: 120, pointerEvents: 'none' }}>
-      <ImageUploadIcon
-        status={status}
-        style={{ color: getIconColor(status, theme) }}
-        size={80}
-      />
+    <Dropzone
+      onDrop={(files) => console.log('accepted files', files)}
+      onReject={(files) => console.log('rejected files', files)}
+      maxSize={3 * 1024 ** 2}
+      accept={IMAGE_MIME_TYPE}
+      {...props}>
+      <Group
+        position="center"
+        spacing="xl"
+        style={{ minHeight: rem(220), pointerEvents: 'none' }}>
+        <Dropzone.Accept>
+          <IconUpload
+            size="3.2rem"
+            stroke={1.5}
+            color={
+              theme.colors[theme.primaryColor][
+                theme.colorScheme === 'dark' ? 4 : 6
+              ]
+            }
+          />
+        </Dropzone.Accept>
+        <Dropzone.Reject>
+          <IconX
+            size="3.2rem"
+            stroke={1.5}
+            color={theme.colors.red[theme.colorScheme === 'dark' ? 4 : 6]}
+          />
+        </Dropzone.Reject>
+        <Dropzone.Idle>
+          <IconPhoto size="3.2rem" stroke={1.5} />
+        </Dropzone.Idle>
 
-      <div>
-        <Text size="xl" inline>
-          拖拽上传图片
-        </Text>
-      </div>
-    </Group>
+        <div>
+          <Text size="xl" inline>
+            拖拽上传图片
+          </Text>
+        </div>
+      </Group>
+    </Dropzone>
   );
-};
+}

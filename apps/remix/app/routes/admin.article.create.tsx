@@ -25,7 +25,7 @@ import {
   setSuccessMessage,
 } from '~/server/middleware/message.server';
 // import EngineDemo from '@wendy/mantine-tiptap';
-import { dropzoneChildren } from '~/web/components/Upload/ImgUpload';
+import { UploadImage } from '~/web/components/Upload/ImgUpload';
 import { useTitle } from '~/web/hooks/useTitle';
 
 const useStyles = createStyles((theme) => {
@@ -124,7 +124,6 @@ export default function CreateArticle() {
   }
 
   const TagItem = forwardRef<HTMLDivElement, ItemProps>(
-    // eslint-disable-next-line react/prop-types
     ({ label, ...others }: ItemProps, ref) => (
       <div ref={ref} {...others}>
         {label}
@@ -182,7 +181,7 @@ export default function CreateArticle() {
 
   // 上传图片
   const imgFetcher = useFetcher();
-  const handleUploa = (file: any) => {
+  const handleUpload = (file: any) => {
     imgFetcher.submit(
       { img: file },
       {
@@ -211,6 +210,7 @@ export default function CreateArticle() {
               required
               label="内容"
               {...form.getInputProps('content')}>
+              <textarea {...form.getInputProps('content')}></textarea>
               {/* <EngineDemo
                 placeholder="文章内容"
                 {...form.getInputProps('content')}
@@ -238,14 +238,15 @@ export default function CreateArticle() {
               creatable
               maxSelectedValues={4}
               getCreateLabel={(query) => `+ 新建 ${query}`}
-              onCreate={async (query) => {
-                await createTagFetcher.submit(
+              onCreate={(query) => {
+                createTagFetcher.submit(
                   { name: query },
                   {
-                    action: '/admin/tag',
+                    action: '/admin/tag/add',
                     method: 'post',
                   },
                 );
+                return { label: query, value: query };
               }}
               itemComponent={TagItem}
               filter={(value, selected, item) => {
@@ -264,7 +265,7 @@ export default function CreateArticle() {
         </Container>
         <Container mt={16} className={classes.main}>
           <Input.Wrapper pb="md" label="封面" {...form.getInputProps('cover')}>
-            <Dropzone
+            <UploadImage
               sx={(theme) => {
                 const error = form.getInputProps('cover').error;
                 const isDark = theme.colorScheme === 'dark';
@@ -278,14 +279,14 @@ export default function CreateArticle() {
               p={2}
               loading={imgFetcher.state === 'loading'}
               multiple={false}
-              onDrop={(files) => handleUploa(files[0])}
+              onDrop={(files) => handleUpload(files[0])}
               maxSize={5_000_000}
               accept={IMAGE_MIME_TYPE}
               onReject={() => {
                 toast.error('图片不能大于5M');
-              }}>
-              {(status) => dropzoneChildren(status, theme, coverSrc)}
-            </Dropzone>
+              }}
+              imgSrc={coverSrc}
+            />
           </Input.Wrapper>
         </Container>
         <Container mt={16} className={classes.main}>
