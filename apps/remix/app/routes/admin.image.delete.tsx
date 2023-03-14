@@ -4,7 +4,7 @@ import { checkAuth } from '~/server/middleware/auth.server';
 import { Message } from '~/server/middleware/message.server';
 import { DeleteImage, GetImageById } from '~/server/models/image.server';
 
-import { tagRoute } from '../__main';
+import { imageRoute } from './admin.image';
 
 export const action: ActionFunction = async ({ request }) => {
   const user = await checkAuth(request);
@@ -12,7 +12,7 @@ export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
   const id = Number(formData.get('id'));
 
-  const messageOptions = { redirect: tagRoute };
+  const messageOptions = { redirect: imageRoute };
 
   if (!id || isNaN(id)) {
     await message.error('标签不存在!', messageOptions);

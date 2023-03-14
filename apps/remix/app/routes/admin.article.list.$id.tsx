@@ -12,7 +12,7 @@ import {
 } from '~/server/middleware/message.server';
 import ErrorMessage from '~/web/components/ErrorMessage';
 
-import CreateArticle from '../create';
+import CreateArticle from './admin.article.create';
 
 type LoaderData = { article: Article };
 

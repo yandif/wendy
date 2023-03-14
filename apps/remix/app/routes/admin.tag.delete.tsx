@@ -4,7 +4,7 @@ import { checkAuth } from '~/server/middleware/auth.server';
 import { Message } from '~/server/middleware/message.server';
 import { DeleteTag, GetTagById } from '~/server/models/tag.server';
 
-import { tagRoute } from '../__main';
+import { tagRoute } from './admin.tag';
 
 export const action: ActionFunction = async ({ request }) => {
   const user = await checkAuth(request);

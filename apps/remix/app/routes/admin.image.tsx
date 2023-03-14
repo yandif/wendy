@@ -23,7 +23,7 @@ import { useTitle } from '~/web/hooks/useTitle';
 export { CatchBoundary, ErrorBoundary } from '~/web/components/Remix';
 
 const title = '图片管理';
-export const tagRoute = '/admin/image';
+export const imageRoute = '/admin/image';
 
 export const meta: MetaFunction = () => {
   return {
@@ -74,7 +74,7 @@ const useStyles = createStyles((theme) => {
   };
 });
 
-export default function TagList() {
+export default function ImageList() {
   useTitle(title);
 
   const fetcher = useFetcher();
@@ -106,7 +106,7 @@ export default function TagList() {
           onClick={async () => {
             await fetcher.submit(
               { id: `${data.id}` },
-              { action: `${tagRoute}/delete`, method: 'delete' },
+              { action: `${imageRoute}/delete`, method: 'delete' },
             );
           }}
           sx={(theme) => {

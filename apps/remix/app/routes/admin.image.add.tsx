@@ -10,7 +10,7 @@ import { Message } from '~/server/middleware/message.server';
 import { CreateTag } from '~/server/models/tag.server';
 import { dropzoneChildren } from '~/web/components/Upload/ImgUpload';
 
-import { tagRoute } from '../__main';
+import { imageRoute } from './admin.image';
 
 export const meta: MetaFunction = () => {
   return {
@@ -32,7 +32,7 @@ export const action: ActionFunction = async ({ request }) => {
   }
 
   await CreateTag({ name, description, userId: user.id });
-  return await message.success('新建成功', { redirect: tagRoute });
+  return await message.success('新建成功', { redirect: imageRoute });
 };
 const useStyles = createStyles((theme) => {
   return {};
@@ -64,7 +64,7 @@ export default function Add() {
   const coverSrc = cover?.name ? `/img/${cover?.name}` : undefined;
 
   return (
-    <Modal opened title="新建图片" onClose={() => nav(tagRoute)}>
+    <Modal opened title="新建图片" onClose={() => nav(imageRoute)}>
       <Dropzone
         p={2}
         loading={imgFetcher.state === 'loading'}

@@ -1,19 +1,30 @@
 import { Button, Modal, Stack, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import type { ActionFunction, MetaFunction } from '@remix-run/node';
-import { useFetcher, useNavigate } from '@remix-run/react';
+import type { ActionFunction, LoaderFunction } from '@remix-run/node';
+import { json } from '@remix-run/node';
+import { useFetcher, useLoaderData, useNavigate } from '@remix-run/react';
 
 import { checkAuth } from '~/server/middleware/auth.server';
 import { Message } from '~/server/middleware/message.server';
-import { CreateTag } from '~/server/models/tag.server';
+import { GetTagById, UpdateTag } from '~/server/models/tag.server';
 
-import { tagRoute } from '../__main';
+import { tagRoute } from './admin.tag';
 
-export const meta: MetaFunction = () => {
-  return {
-    title: '新建标签',
-    description: '新建标签',
-  };
+export const loader: LoaderFunction = async ({ params, request }) => {
+  const message = new Message(request);
+  const id = Number(params.id);
+
+  if (!id || isNaN(id)) {
+    return await message.error('标签不存在!', { redirect: tagRoute });
+  }
+
+  const tag = await GetTagById(id);
+
+  if (!tag) {
+    return await message.error('标签不存在!', { redirect: tagRoute });
+  }
+
+  return json(tag);
 };
 
 export const action: ActionFunction = async ({ request }) => {
@@ -21,29 +32,33 @@ export const action: ActionFunction = async ({ request }) => {
   const message = new Message(request);
 
   const formData = await request.formData();
+  const id = Number(formData.get('id'));
   const name = formData.get('name') as string;
   const description = (formData.get('description') as string) || '';
 
-  if (!name) {
-    return await message.error('请确保标签的名称有值!');
+  const tag = await GetTagById(id);
+  if (!tag || tag.accountId !== user.id) {
+    return await message.error('保存失败，标签不存在!', { redirect: tagRoute });
+  } else {
+    await UpdateTag(id, { name, description });
+    return await message.success('保存成功', { redirect: tagRoute });
   }
-
-  await CreateTag({ name, description, userId: user.id });
-  return await message.success('新建成功', { redirect: tagRoute });
 };
 
-export default function Add() {
+export default function Edit() {
+  const nav = useNavigate();
+  const data = useLoaderData();
+
+  const fetcher = useFetcher();
+
   const form = useForm({
-    initialValues: { name: '', description: '' },
+    initialValues: data,
 
     validate: {
       name: (value) => (value?.length === 0 ? '请输入名称' : null),
     },
   });
 
-  const nav = useNavigate();
-
-  const fetcher = useFetcher();
   const handleSave = async () => {
     const res = form.validate();
     if (!res.hasErrors) {
@@ -73,7 +88,7 @@ export default function Add() {
         />
 
         <Stack align="flex-end">
-          <Button onClick={handleSave}> 提交</Button>
+          <Button onClick={handleSave}>提交</Button>
         </Stack>
       </fetcher.Form>
     </Modal>
