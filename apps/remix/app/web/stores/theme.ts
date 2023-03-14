@@ -1,5 +1,5 @@
 import type { ColorScheme } from '@mantine/core';
-import create from 'zustand';
+import { create } from 'zustand';
 
 type ThemeState = {
   opened: boolean;

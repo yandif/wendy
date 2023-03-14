@@ -9,7 +9,7 @@ import {
   UnstyledButton,
 } from '@mantine/core';
 import { Link } from '@remix-run/react';
-import { ChevronDown, Logout, Settings } from 'tabler-icons-react';
+import { IconChevronDown, IconLogout, IconSettings } from '@tabler/icons-react';
 
 import { ToggleColorSchemeIcon } from '~/web/components/ToggleColorScheme';
 import useAdminStore from '~/web/stores/admin';
@@ -55,7 +55,7 @@ export default function Header() {
               <Text weight={500} size="sm" mr={3}>
                 {user?.username}
               </Text>
-              <ChevronDown size={12} />
+              <IconChevronDown size={12} />
             </Group>
           </UnstyledButton>
         }>
@@ -64,8 +64,11 @@ export default function Header() {
         </Menu.Label>
         <Divider />
         <Menu.Label>设置</Menu.Label>
-        <Menu.Item icon={<Settings size={14} />}>个人中心</Menu.Item>
-        <Menu.Item component={Link} to="/logout" icon={<Logout size={14} />}>
+        <Menu.Item icon={<IconSettings size={14} />}>个人中心</Menu.Item>
+        <Menu.Item
+          component={Link}
+          to="/logout"
+          icon={<IconLogout size={14} />}>
           登出
         </Menu.Item>
       </Menu>

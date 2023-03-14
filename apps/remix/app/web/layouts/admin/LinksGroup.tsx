@@ -6,9 +6,9 @@ import {
   UnstyledButton,
 } from '@mantine/core';
 import { Link, useLocation } from '@remix-run/react';
+import type { Icon } from '@tabler/icons-react';
+import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import { useState } from 'react';
-import type { Icon as TablerIcon } from 'tabler-icons-react';
-import { ChevronLeft, ChevronRight } from 'tabler-icons-react';
 
 const useStyles = createStyles((theme) => ({
   control: {
@@ -74,7 +74,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 interface LinksGroupProps {
-  icon: TablerIcon;
+  icon: Icon;
   label: string;
   initiallyOpened?: boolean;
   links?: { label: string; link: string }[];
@@ -92,7 +92,7 @@ export function LinksGroup({
 }: LinksGroupProps) {
   const { classes, theme } = useStyles();
   const hasLinks = Array.isArray(links);
-  const ChevronIcon = theme.dir === 'ltr' ? ChevronRight : ChevronLeft;
+  const ChevronIcon = theme.dir === 'ltr' ? IconChevronRight : IconChevronLeft;
   const location = useLocation();
 
   // 高亮活跃的菜单

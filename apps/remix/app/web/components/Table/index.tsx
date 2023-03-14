@@ -9,7 +9,7 @@ import {
 } from '@mantine/core';
 import { useNavigate } from '@remix-run/react';
 import { useState } from 'react';
-import { Box as BoxIcon } from 'tabler-icons-react';
+import { IconBox } from '@tabler/icons-react';
 
 function useSize(_size: number) {
   const [size, setSize] = useState(_size);
@@ -97,7 +97,7 @@ export default function Table({
             height: bodyHeight,
             flexDirection: 'column',
           }}>
-          <BoxIcon size={81} strokeWidth={1} color="#eee" />
+          <IconBox size={81} strokeWidth={1} color="#eee" />
           <Text size="md" color="#bbb">
             暂无数据
           </Text>
