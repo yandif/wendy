@@ -11,8 +11,8 @@ class AuthStore {
     makeAutoObservable(this);
   }
 
-  login() {
-    this.user = { name: '123' };
+  login(name: string) {
+    this.user = { name };
   }
 
   logout() {
