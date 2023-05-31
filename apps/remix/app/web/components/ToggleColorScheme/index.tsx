@@ -4,9 +4,7 @@ import { IconMoonStars, IconSun } from '@tabler/icons-react';
 
 import useThemeStore from '~/web/stores/theme';
 
-export function ToggleColorSchemeIcon(
-  props: Omit<ActionIconProps<'button'>, 'title'>,
-) {
+export function ToggleColorSchemeIcon(props: Omit<ActionIconProps, 'title'>) {
   const { colorScheme, toggleColorScheme } = useThemeStore();
   const dark = colorScheme === 'dark';
 

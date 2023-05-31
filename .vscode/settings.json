@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "Monokai++",
+  "workbench.colorTheme": "Monokai++ Unified",
   "workbench.iconTheme": "material-icon-theme",
   "editor.fontFamily": "Fira Code",
   "editor.tabSize": 2,
@@ -44,45 +44,5 @@
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "better-comments.tags": [
-    {
-      "tag": "!",
-      "color": "#FF2D00",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      "tag": "?",
-      "color": "#3498DB",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      "tag": "//",
-      "color": "#474747",
-      "strikethrough": true,
-      "backgroundColor": "transparent"
-    },
-    {
-      "tag": "todo",
-      "color": "#FF8C00",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      "tag": "*",
-      "color": "gold",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    }
-  ],
-  "todo-tree.highlights.defaultHighlight": {
-    "icon": "alert",
-    "type": "text",
-    "foreground": "red",
-    "background": "white",
-    "opacity": 50,
-    "iconColour": "blue"
   }
 }
