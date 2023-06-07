@@ -1,3 +1,9 @@
+import { Button } from '@kitten-ui/core';
+
 export const B = () => {
-  return <div>B</div>;
+  return (
+    <div>
+      B<Button>按钮</Button>
+    </div>
+  );
 };

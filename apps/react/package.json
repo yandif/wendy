@@ -8,6 +8,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@kitten-ui/core": "^0.0.2",
+    "antd": "^5.5.2",
+    "dayjs": "^1.11.7",
     "mobx": "^6.9.0",
     "mobx-react": "^7.6.0",
     "normalize.css": "^8.0.1",
