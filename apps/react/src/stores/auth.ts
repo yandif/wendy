@@ -1,23 +1,15 @@
-import { makeAutoObservable } from 'mobx';
+import { observable } from '@legendapp/state';
 
 type User = {
   name: string;
 };
 
-class AuthStore {
-  user?: User;
+export const authStore = observable<User>();
 
-  constructor() {
-    makeAutoObservable(this);
-  }
+export const login = (name: string) => {
+  authStore.set({ name });
+};
 
-  login(name: string) {
-    this.user = { name };
-  }
-
-  logout() {
-    this.user = undefined;
-  }
-}
-
-export const authStore = new AuthStore();
+export const logout = () => {
+  authStore.delete();
+};

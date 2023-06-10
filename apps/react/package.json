@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "@kitten-ui/core": "^0.0.2",
+    "@legendapp/state": "^1.2.8",
     "antd": "^5.5.2",
+    "axios": "^1.4.0",
     "dayjs": "^1.11.7",
     "mobx": "^6.9.0",
     "mobx-react": "^7.6.0",
