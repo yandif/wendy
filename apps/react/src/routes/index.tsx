@@ -3,6 +3,7 @@ import { authStore } from '@/stores/auth';
 import { useRoutes } from 'react-router-dom';
 import { protectedRoutes } from './protected';
 import { publicRoutes } from './public';
+import { Computed } from '@legendapp/state/react';
 
 export const AppRoutes = () => {
   const commonRoutes = [
@@ -16,7 +17,12 @@ export const AppRoutes = () => {
 
   return (
     <>
-      {authStore.get() && '登录'}
+      {!!authStore.get() && '登录'}
+      <Computed>
+        {() => {
+          return authStore.get() && '登录';
+        }}
+      </Computed>
       {element}
     </>
   );
