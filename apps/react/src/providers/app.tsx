@@ -1,4 +1,9 @@
+import { queryClient } from '@/lib/react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 type AppProviderProps = {
@@ -8,7 +13,22 @@ type AppProviderProps = {
 export const AppProvider = ({ children }: AppProviderProps) => {
   return (
     <Suspense fallback="加载中">
-      <Router>{children}</Router>
+      <ErrorBoundary
+        FallbackComponent={() => (
+          <button
+            onClick={() => window.location.assign(window.location.origin)}>
+            Refresh
+          </button>
+        )}>
+        <HelmetProvider>
+          <QueryClientProvider client={queryClient}>
+            {process.env.NODE_ENV !== 'test' && (
+              <ReactQueryDevtools initialIsOpen={false} />
+            )}
+            <Router>{children}</Router>
+          </QueryClientProvider>
+        </HelmetProvider>
+      </ErrorBoundary>
     </Suspense>
   );
 };

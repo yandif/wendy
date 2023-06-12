@@ -1,28 +1,17 @@
 import { AppProvider } from '@/providers/app';
 import { AppRoutes } from '@/routes';
 import { enableLegendStateReact } from '@legendapp/state/react';
-import { authStore, login, logout } from './stores/auth';
-
+import { Chance } from 'chance';
+const chance = new Chance();
 enableLegendStateReact();
 
 function App() {
-  console.log(authStore);
+  console.log(chance.phone());
   return (
-    <>
-      {authStore?.name} <button onClick={() => login('haha')}>login</button>
-      <button
-        onClick={() => {
-          logout();
-        }}>
-        logout
-      </button>
-    </>
+    <AppProvider>
+      <AppRoutes />
+    </AppProvider>
   );
-  // return (
-  //   <AppProvider>
-  //     <AppRoutes />
-  //   </AppProvider>
-  // );
 }
 
 export default App;

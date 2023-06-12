@@ -1,4 +1,4 @@
-import { Body, Controller, HttpCode, HttpStatus, Logger, Post } from '@nestjs/common'
+import { Body, Controller, Get, HttpCode, HttpStatus, Logger, Post } from '@nestjs/common'
 import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger'
 import { IpAddress } from '@src/decorators/ip.address'
 import { LoginDto } from './login.dto'

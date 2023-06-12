@@ -1,18 +1,17 @@
-import { authStore } from '@/stores/auth';
-import { observer } from 'mobx-react';
+import { login } from '@/stores/auth';
 import { useNavigate } from 'react-router-dom';
 
-export const Login = observer(() => {
+export const Login = () => {
   const nav = useNavigate();
   return (
     <div>
       <button
         onClick={() => {
-          authStore.login('星晨');
+          login('星晨');
           nav('/');
         }}>
         Login
       </button>
     </div>
   );
-});
+};
