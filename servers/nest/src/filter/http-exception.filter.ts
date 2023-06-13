@@ -8,7 +8,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const ctx = host.switchToHttp()
     const response = ctx.getResponse()
     const request = ctx.getRequest()
-    const status = exception instanceof HttpException ? exception.getStatus() : HttpStatus.INTERNAL_SERVER_ERROR
+    // const status = exception instanceof HttpException ? exception.getStatus() : HttpStatus.INTERNAL_SERVER_ERROR
 
     let resultMessage: string, resultCode: CodeEnum
     try {
@@ -22,12 +22,12 @@ export class HttpExceptionFilter implements ExceptionFilter {
     }
 
     const errorResponse = {
-      status,
       message: resultMessage || exception.message,
       code: resultCode || CodeEnum.FAILED, // 自定义code
-      path: request.url, // 错误的url地址
-      method: request.method, // 请求方式
-      timestamp: new Date().toLocaleDateString(), // 错误的时间
+      // status,
+      // path: request.url, // 错误的url地址
+      // method: request.method, // 请求方式
+      // timestamp: new Date().toLocaleDateString(), // 错误的时间
     }
 
     // 打印日志
