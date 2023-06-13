@@ -1,9 +1,10 @@
 import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
+import { CodeEnum } from '@src/enums'
+import { LoggerService } from '@src/module/shared/logger/logger.service'
 import { PrismaService } from '@src/module/shared/prisma/prisma.service'
 import { ToolsService } from '@src/module/shared/tools/tools.service'
 import * as dayjs from 'dayjs'
-import { LoggerService } from '@src/module/shared/logger/logger.service'
 import { LoginDto } from './login.dto'
 import { LoginVo } from './login.vo'
 
@@ -76,11 +77,11 @@ export class LoginService {
           role,
         }
       } else {
-        throw new HttpException('用户名或密码错误', HttpStatus.OK)
+        throw new HttpException(JSON.stringify({ code: CodeEnum.USERNAME_OR_PASSWORD_ERROR }), HttpStatus.OK)
       }
     } catch (e) {
       this.logger.error(e.message)
-      throw new HttpException('用户名或密码错误', HttpStatus.OK)
+      throw new HttpException(JSON.stringify({ code: CodeEnum.USERNAME_OR_PASSWORD_ERROR }), HttpStatus.OK)
     }
   }
 }

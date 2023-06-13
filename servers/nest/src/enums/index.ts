@@ -43,16 +43,25 @@ export const AdminIdentityMessage = {
   1: '超级管理员',
 }
 
-/** 定义返回错误的code */
+/** 定义返回的code */
 export enum CodeEnum {
+  /** 成功 */
+  SUCCESS = 0,
+  /** 失败 */
+  FAILED = 1,
+  /** 用户名或密码错误 */
+  USERNAME_OR_PASSWORD_ERROR = 10040,
   /** 没传递token */
   NO_TOKEN = 10042,
   /** token错误 */
   TOKEN_ERROR = 10043,
 }
 
-/** 错误的code文字描素 */
+/** 定义返回的message */
 export const CodeMessage = {
+  0: '请求成功',
+  1: '请求失败',
   10042: '你还没登录,请先登录',
   10043: '登录失效，请重新登录',
+  10040: '用户名或密码错误',
 }

@@ -1,12 +1,11 @@
-import { CanActivate, ExecutionContext, Injectable, HttpException, HttpStatus, Logger } from '@nestjs/common'
-import dayjs = require('dayjs')
-import { Environment } from '@src/main.config'
+import { CanActivate, ExecutionContext, HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common'
 import { API_AUTH_KEY } from '@src/constant'
 import { ICurrentUserType } from '@src/decorators/current.user'
-import { CodeEnum, CodeMessage } from '@src/enums'
+import { CodeEnum } from '@src/enums'
 import { ApiAuthService } from '@src/module/shared/api-auth/api-auth.service'
 import { PrismaService } from '@src/module/shared/prisma/prisma.service'
 import { getUrlQuery } from '@src/util'
+import dayjs = require('dayjs')
 
 const logger: Logger = new Logger('auth.guard')
 
@@ -57,23 +56,14 @@ export class AuthGuard implements CanActivate {
             return true
           }
         } else {
-          throw new HttpException(
-            JSON.stringify({
-              code: CodeEnum.TOKEN_ERROR,
-              message: CodeMessage[CodeEnum.TOKEN_ERROR],
-            }),
-            HttpStatus.OK
-          )
+          throw new HttpException(JSON.stringify({ code: CodeEnum.TOKEN_ERROR }), HttpStatus.OK)
         }
       } catch (e) {
         Logger.error(e, 'auth')
         throw new HttpException(e, e.status)
       }
     } else {
-      throw new HttpException(
-        JSON.stringify({ code: CodeEnum.NO_TOKEN, message: CodeMessage[CodeEnum.NO_TOKEN] }),
-        HttpStatus.OK
-      )
+      throw new HttpException(JSON.stringify({ code: CodeEnum.NO_TOKEN }), HttpStatus.OK)
     }
   }
 }
