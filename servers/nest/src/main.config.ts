@@ -4,6 +4,7 @@ import 'dotenv/config'
 export const App = {
   port: process.env.APP_PORT || 3000,
   prefix: process.env.APP_PREFIX || 'api' + '/' + 'v1',
+  frontendHost: process.env.FRONTEND_HOST || '*',
 }
 
 export const Admin = {

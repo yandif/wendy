@@ -15,7 +15,9 @@ const AppOptions: NestApplicationOptions = {
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, AppOptions)
-  app.enableCors()
+  app.enableCors({
+    origin: App.frontendHost,
+  })
   app.setGlobalPrefix(App.prefix)
   app.use(helmet())
   app.useGlobalFilters(new HttpExceptionFilter())
