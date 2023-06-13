@@ -1,5 +1,3 @@
-import {} from 'lodash';
-
 /**
  * 简单的加密
  */
