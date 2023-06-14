@@ -10,7 +10,7 @@ export class TransformInterceptor implements NestInterceptor {
     return next.handle().pipe(
       map((data: any) => {
         return {
-          result: instanceToPlain(data),
+          data: instanceToPlain(data),
           code: CodeEnum.SUCCESS,
           message: CodeMessage[CodeEnum.SUCCESS],
         }
