@@ -3,6 +3,7 @@ import { ResponeData } from '@/services';
 import { notification } from 'antd';
 import axios from 'axios';
 import { authStorage } from '@/utils/storages';
+import { unCompile } from '@/utils/tool';
 
 const instance = axios.create({
   baseURL: API_URL,
@@ -17,7 +18,7 @@ instance.interceptors.request.use(
   (config) => {
     const token = authStorage.get();
     if (token) {
-      config.headers && (config.headers['token'] = window.btoa(token));
+      config.headers && (config.headers['token'] = unCompile(token));
     }
     // 文件上传，发送的是二进制流，所以需要设置请求头的'Content-Type'
     // if (config.url.includes("/upload")) {
@@ -34,7 +35,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   (response) => {
     const data = response?.data || {};
-    const { code, message, result } = data;
+    const { code, message } = data;
 
     if (code !== 0) {
       if (code === 10043) {
@@ -44,7 +45,7 @@ instance.interceptors.response.use(
       notification.error({ message });
     }
 
-    return Promise.resolve({ ...data, code, message, data: result });
+    return Promise.resolve(data);
   },
   (error) => {
     return Promise.reject(error);

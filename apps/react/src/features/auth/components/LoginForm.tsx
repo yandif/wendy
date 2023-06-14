@@ -30,7 +30,7 @@ const LoginForm = ({ prefix }: any) => {
     check: () => {
       const loginInfo = loginInfoStorage.get();
       if (loginInfo) {
-        const { username, password } = JSON.parse(loginInfo);
+        const { username, password } = loginInfo;
 
         setRememberPassword(true);
 
@@ -62,7 +62,7 @@ const LoginForm = ({ prefix }: any) => {
       const { username, password } = await form.validateFields();
 
       const account = await Account.Login({ username, password });
-
+      console.log(account);
       if (!account || account.code !== 0 || !account.data) {
         // 登录失败
         return account;
@@ -72,11 +72,10 @@ const LoginForm = ({ prefix }: any) => {
 
       notification.success({ message: '登录成功' });
 
-      authStorage.set(window.atob(account.data.token));
+      authStorage.set(compile(account.data.token));
 
       authStore.set(account.data);
     } catch (e) {
-      //
       console.log(e);
     } finally {
       setLoading(false);

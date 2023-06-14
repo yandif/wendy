@@ -42,6 +42,7 @@ const Login = () => {
       <div className={`${prefix}-background`}>
         <Background />
       </div>
+
       <LoginForm prefix={prefix} />
     </div>
   );

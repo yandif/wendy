@@ -76,14 +76,7 @@ export default function CanvasBack({
 
   /** 绘制一帧 **/
   const drow = useCallback(
-    (
-      dots: Array<any>,
-      row: number,
-      col: number,
-      ctx: CanvasRenderingContext2D,
-      width: number,
-      height: number,
-    ) => {
+    (dots: any, row: any, col: any, ctx: any, width: any, height: any) => {
       ctx.fillRect(0, 0, width, height);
 
       for (let i = 0; i < row; i++) {
