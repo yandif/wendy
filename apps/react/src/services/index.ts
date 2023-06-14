@@ -1,5 +1,5 @@
-import { tool } from '@/utils';
-import { del, get, patch, post } from '@/lib/axios';
+import qs from 'query-string';
+import { del, get, patch, post } from '@/libs/axios';
 
 export type ResponeData = {
   /**
@@ -18,7 +18,7 @@ export type ResponeData = {
 
 export const Role = {
   getPageList(params: { [key: string]: any }): Promise<ResponeData> {
-    return get(`/role${tool.genParamString(params)}`);
+    return get(`/role?${qs.stringify(params)}`);
   },
   create(data: any): Promise<ResponeData> {
     return post('/role', data);
@@ -33,7 +33,7 @@ export const Role = {
 
 export const Menu = {
   getPageList(params: { [key: string]: any }): Promise<ResponeData> {
-    return get(`/role${tool.genParamString(params)}`);
+    return get(`/role?${qs.stringify(params)}`);
   },
   create(data: any): Promise<ResponeData> {
     return post('/role', data);
@@ -57,7 +57,7 @@ export const Account = {
     return get('/account/me');
   },
   getPageList(params: { [key: string]: any }): Promise<ResponeData> {
-    return get(`/account${tool.genParamString(params)}`);
+    return get(`/account?${qs.stringify(params)}`);
   },
   createUser(data: any): Promise<ResponeData> {
     return post('/account', data);
