@@ -1,11 +1,15 @@
-import { authStore } from '@/stores/auth';
-import { useRoutes } from 'react-router-dom';
-import { protectedRoutes } from './protected';
-import { publicRoutes } from './public';
-import { API_URL } from '@/config';
+import AuthRoutes from '@/features/auth/routes';
+import HomeRoutes from '@/features/home/routes';
+import React from 'react';
+import { RouteObject, useRoutes } from 'react-router-dom';
 
-export const AppRoutes = () => {
-  const routes = authStore.get() ? protectedRoutes : [];
-  console.log(API_URL);
-  return useRoutes([...routes, ...publicRoutes]);
-};
+const AdminRoutes = React.lazy(() => import('@/features/admin/routes'));
+
+export const publicRoutes: RouteObject[] = [
+  { path: '/auth/*', element: <AuthRoutes /> },
+  { path: '/admin/*', element: <AdminRoutes /> },
+  { path: '/', element: <HomeRoutes /> },
+  { path: '*', element: 404 },
+];
+
+export const AppRoutes = () => useRoutes(publicRoutes);

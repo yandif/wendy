@@ -1,9 +1,10 @@
-import { API_URL } from '@/config';
+import { API_URL, CodeEnum } from '@/config';
 import { ResponeData } from '@/services';
 import { notification } from 'antd';
 import axios from 'axios';
 import { authStorage } from '@/utils/storages';
 import { unCompile } from '@/utils/tool';
+import { historyStore } from '@/stores/history';
 
 const instance = axios.create({
   baseURL: API_URL,
@@ -37,12 +38,12 @@ instance.interceptors.response.use(
     const data = response?.data || {};
     const { code, message } = data;
 
-    if (code !== 0) {
-      if (code === 10043) {
+    if (code !== CodeEnum.SUCCESS) {
+      notification.error({ key: message, message });
+      if ([CodeEnum.TOKEN_ERROR, CodeEnum.NO_TOKEN].includes(code)) {
         authStorage.clear();
-        window.location.assign(window.location.origin as unknown as string);
+        historyStore.set('/auth/login');
       }
-      notification.error({ message });
     }
 
     return Promise.resolve(data);

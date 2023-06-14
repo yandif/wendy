@@ -1,71 +1,66 @@
-import qs from 'query-string';
+import { CodeEnum } from '@/config';
 import { del, get, patch, post } from '@/libs/axios';
+import qs from 'query-string';
 
 export type ResponeData = {
-  /**
-   * 返回的数据
-   */
-  data: any;
-  /**
-   * 状态码:0成功； 1失败；
-   */
-  code: number;
-  /**
-   * 消息
-   */
+  data?: any;
+  code: CodeEnum;
   message: string;
 };
 
 export const Role = {
-  getPageList(params: { [key: string]: any }): Promise<ResponeData> {
+  getPageList(params: { [key: string]: any }) {
     return get(`/role?${qs.stringify(params)}`);
   },
-  create(data: any): Promise<ResponeData> {
+  create(data: any) {
     return post('/role', data);
   },
-  edit(id: any, data: any): Promise<ResponeData> {
+  edit(id: any, data: any) {
     return patch(`/role/${id}`, data);
   },
-  deleteRole(id: any): Promise<ResponeData> {
+  deleteRole(id: any) {
     return del(`/role/${id}`);
   },
 };
 
 export const Menu = {
-  getPageList(params: { [key: string]: any }): Promise<ResponeData> {
+  getPageList(params: { [key: string]: any }) {
     return get(`/role?${qs.stringify(params)}`);
   },
-  create(data: any): Promise<ResponeData> {
+  create(data: any) {
     return post('/role', data);
   },
-  edit(id: any, data: any): Promise<ResponeData> {
+  edit(id: any, data: any) {
     return patch(`/role/${id}`, data);
   },
-  deleteRole(id: any): Promise<ResponeData> {
+  deleteRole(id: any) {
     return del(`/role/${id}`);
   },
 };
 
 export const Account = {
-  Login(data: { username: any; password: any }): Promise<ResponeData> {
-    return post('/login', data);
+  Login(data: { username: any; password: any }) {
+    return post('/auth/login', data);
   },
-  getMenus(): Promise<ResponeData> {
+  logout() {
+    return get('/auth/logout');
+  },
+  getMenus() {
     return get('/menus');
   },
-  getUserInfo(): Promise<ResponeData> {
+  getUserInfo() {
     return get('/account/me');
   },
-  getPageList(params: { [key: string]: any }): Promise<ResponeData> {
+  getPageList(params: { [key: string]: any }) {
     return get(`/account?${qs.stringify(params)}`);
   },
-  createUser(data: any): Promise<ResponeData> {
+  createUser(data: any) {
     return post('/account', data);
   },
-  editUser(id: any, data: any): Promise<ResponeData> {
+  editUser(id: any, data: any) {
     return patch(`/account/${id}`, data);
   },
-  deleteUser(id: any): Promise<ResponeData> {
+  deleteUser(id: any) {
     return del(`/account/${id}`);
   },
 };

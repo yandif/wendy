@@ -26,9 +26,9 @@ export default function CanvasBack({
     height: 0,
   });
 
-  const [play, setPlay] = useState(false);
+  const play = useRef(false);
   useEffect(() => {
-    setPlay(true);
+    play.current = true;
 
     if (myCanvas.current) {
       data.current.ctx = myCanvas.current.getContext('2d');
@@ -44,7 +44,7 @@ export default function CanvasBack({
     }
 
     return () => {
-      setPlay(false);
+      play.current = false;
     };
   }, []);
 
@@ -76,7 +76,14 @@ export default function CanvasBack({
 
   /** 绘制一帧 **/
   const drow = useCallback(
-    (dots: any, row: any, col: any, ctx: any, width: any, height: any) => {
+    (
+      dots: any[],
+      row: number,
+      col: number,
+      ctx: any,
+      width: any,
+      height: any,
+    ) => {
       ctx.fillRect(0, 0, width, height);
 
       for (let i = 0; i < row; i++) {
@@ -181,7 +188,7 @@ export default function CanvasBack({
 
     drow(data.current.dots, row, col, data.current.ctx, width, height);
 
-    if (play) {
+    if (play.current) {
       requestAnimationFrame(animate);
     }
   };

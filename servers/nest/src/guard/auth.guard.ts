@@ -5,7 +5,7 @@ import { CodeEnum } from '@src/enums'
 import { ApiAuthService } from '@src/module/shared/api-auth/api-auth.service'
 import { PrismaService } from '@src/module/shared/prisma/prisma.service'
 import { getUrlQuery } from '@src/util'
-import dayjs = require('dayjs')
+import * as dayjs from 'dayjs'
 
 const logger: Logger = new Logger('auth.guard')
 

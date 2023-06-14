@@ -1,14 +1,12 @@
-import { KeyOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input } from 'antd';
-import { useEffect, useState } from 'react';
-
 import LogoImg from '@/assets/img/logo.png';
-import { notification } from 'antd';
-
+import { CodeEnum } from '@/config';
 import { Account } from '@/services';
+import { authStore } from '@/stores/auth';
 import { authStorage, loginInfoStorage } from '@/utils/storages';
 import { compile, unCompile } from '@/utils/tool';
-import { authStore } from '@/stores/auth';
+import { KeyOutlined, UserOutlined } from '@ant-design/icons';
+import { Button, Checkbox, Form, Input, notification } from 'antd';
+import { useEffect, useState } from 'react';
 
 const LoginForm = ({ prefix }: any) => {
   const [show, setShow] = useState(false);
@@ -62,10 +60,10 @@ const LoginForm = ({ prefix }: any) => {
       const { username, password } = await form.validateFields();
 
       const account = await Account.Login({ username, password });
-      console.log(account);
-      if (!account || account.code !== 0 || !account.data) {
+
+      if (!account || account.code !== CodeEnum.SUCCESS || !account.data) {
         // 登录失败
-        return account;
+        return;
       }
 
       PassWord.remember(username, password);

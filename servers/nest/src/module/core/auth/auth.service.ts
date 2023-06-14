@@ -5,18 +5,19 @@ import { LoggerService } from '@src/module/shared/logger/logger.service'
 import { PrismaService } from '@src/module/shared/prisma/prisma.service'
 import { ToolsService } from '@src/module/shared/tools/tools.service'
 import * as dayjs from 'dayjs'
-import { LoginDto } from './login.dto'
-import { LoginVo } from './login.vo'
+import { LoginDto } from './auth.dto'
+import { LoginVo } from './auth.vo'
+import { ICurrentUserType } from '@src/decorators/current.user'
 
 @Injectable()
-export class LoginService {
-  private readonly logger: Logger = new Logger(LoginService.name)
+export class AuthService {
+  private readonly logger: Logger = new Logger(AuthService.name)
 
-  private readonly loggerService = new LoggerService(LoginService.name)
+  private readonly loggerService = new LoggerService(AuthService.name)
 
   constructor(private prisma: PrismaService, private tools: ToolsService, private config: ConfigService) {}
 
-  async adminLogin(loginDto: LoginDto, ipAddress: string): Promise<LoginVo> {
+  async login(loginDto: LoginDto, ipAddress: string): Promise<LoginVo> {
     try {
       this.logger.log(`接收的登录参数:${JSON.stringify(loginDto)}`)
       const { username, password } = loginDto
@@ -48,7 +49,7 @@ export class LoginService {
           platform,
           token,
           // 设置token失效时间
-          expireTime: dayjs().add(tokenExpire, 'day').format(),
+          expireTime: dayjs().add(10, 'second').format(),
         }
         // 先判断之前是否有记录，有记录就更新，没记录就创建
         const findToken = await this.prisma.accountToken.findFirst({
@@ -83,5 +84,9 @@ export class LoginService {
       this.logger.error(e.message)
       throw new HttpException(JSON.stringify({ code: CodeEnum.USERNAME_OR_PASSWORD_ERROR }), HttpStatus.OK)
     }
+  }
+
+  async logout(userInfo: ICurrentUserType): Promise<void> {
+    this.logger.log(userInfo)
   }
 }
