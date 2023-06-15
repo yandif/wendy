@@ -23,6 +23,9 @@ importers:
       '@legendapp/state':
         specifier: ^1.2.8
         version: 1.2.8(react@18.2.0)
+      '@tanem/react-nprogress':
+        specifier: ^5.0.42
+        version: 5.0.42(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/react-query':
         specifier: ^4.29.12
         version: 4.29.12(react-dom@18.2.0)(react@18.2.0)
@@ -4748,6 +4751,18 @@ packages:
 
   /@tabler/icons@2.10.0:
     resolution: {integrity: sha512-rj9xrHTSw7bPpylx8g9xhhUgO9NYKX1wGnGrMaFS5CQ9KS+jhwhKFqbZaQKhXNhpvI0cLEEW6GaRXdrC3iBs1A==}
+    dev: false
+
+  /@tanem/react-nprogress@5.0.42(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-8JRLq0ypk2HX+aPMU3N8ulOqpo525jVBGXEl5BLQC7tBPhuojYuO0LDeA7Of3gSFhEc8Sj8UBlSrrJHWR4MmpA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@babel/runtime': 7.22.5
+      hoist-non-react-statics: 3.3.2
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /@tanstack/match-sorter-utils@8.8.4:

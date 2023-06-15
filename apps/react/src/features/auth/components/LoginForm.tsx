@@ -2,6 +2,7 @@ import LogoImg from '@/assets/img/logo.png';
 import { CodeEnum } from '@/config';
 import { Account } from '@/services';
 import { authStore } from '@/stores/auth';
+import { progressStore } from '@/stores/progress';
 import { authStorage, loginInfoStorage } from '@/utils/storages';
 import { compile, unCompile } from '@/utils/tool';
 import { KeyOutlined, UserOutlined } from '@ant-design/icons';
@@ -57,6 +58,7 @@ const LoginForm = ({ prefix }: any) => {
   const handleSubmit = async () => {
     try {
       setLoading(true);
+      progressStore.set(true);
       const { username, password } = await form.validateFields();
 
       const account = await Account.Login({ username, password });
@@ -77,6 +79,7 @@ const LoginForm = ({ prefix }: any) => {
       console.log(e);
     } finally {
       setLoading(false);
+      progressStore.set(false);
     }
   };
 
