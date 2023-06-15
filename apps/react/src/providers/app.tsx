@@ -1,4 +1,4 @@
-import { History } from '@/components/History';
+import { useListener } from '@/hooks/useListener';
 import { queryClient } from '@/libs/react-query';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -26,10 +26,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
             {process.env.NODE_ENV !== 'test' && (
               <ReactQueryDevtools initialIsOpen={false} />
             )}
-            <Router>
-              <History />
-              {children}
-            </Router>
+            <Router>{children}</Router>
           </QueryClientProvider>
         </HelmetProvider>
       </ErrorBoundary>

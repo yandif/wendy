@@ -49,7 +49,7 @@ export class AuthService {
           platform,
           token,
           // 设置token失效时间
-          expireTime: dayjs().add(10, 'second').format(),
+          expireTime: dayjs().add(tokenExpire, 'day').format(),
         }
         // 先判断之前是否有记录，有记录就更新，没记录就创建
         const findToken = await this.prisma.accountToken.findFirst({
