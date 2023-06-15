@@ -2,7 +2,7 @@ import { API_URL, CodeEnum } from '@/config';
 import { ResponeData } from '@/services';
 import { notification } from 'antd';
 import axios, { AxiosError, AxiosResponse } from 'axios';
-import { authStorage } from '@/utils/storages';
+import { tokenStorage } from '@/utils/storages';
 import { unCompile } from '@/utils/tool';
 import { historyStore } from '@/stores/history';
 
@@ -17,7 +17,7 @@ instance.defaults.headers.post['Content-Type'] = 'application/json';
 /** 添加请求拦截器 **/
 instance.interceptors.request.use(
   (config) => {
-    const token = authStorage.get();
+    const token = tokenStorage.get();
     if (token) {
       config.headers && (config.headers['token'] = unCompile(token));
     }
@@ -41,7 +41,7 @@ instance.interceptors.response.use(
     if (code !== CodeEnum.SUCCESS) {
       notification.error({ key: message, message });
       if ([CodeEnum.TOKEN_ERROR, CodeEnum.NO_TOKEN].includes(code)) {
-        authStorage.clear();
+        tokenStorage.clear();
         historyStore.set('/auth/login');
       }
     }

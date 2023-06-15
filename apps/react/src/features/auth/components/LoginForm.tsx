@@ -1,9 +1,9 @@
 import LogoImg from '@/assets/img/logo.png';
 import { CodeEnum } from '@/config';
 import { Account } from '@/services';
-import { authStore } from '@/stores/auth';
+import { userStore } from '@/stores/auth';
 import { progressStore } from '@/stores/progress';
-import { authStorage, loginInfoStorage } from '@/utils/storages';
+import { tokenStorage, loginInfoStorage } from '@/utils/storages';
 import { compile, unCompile } from '@/utils/tool';
 import { KeyOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, notification } from 'antd';
@@ -72,9 +72,9 @@ const LoginForm = ({ prefix }: any) => {
 
       notification.success({ message: '登录成功' });
 
-      authStorage.set(compile(account.data.token));
+      tokenStorage.set(compile(account.data.token));
 
-      authStore.set(account.data);
+      userStore.set(account.data);
     } catch (e) {
       console.log(e);
     } finally {

@@ -14,5 +14,5 @@ function createStorage(key: string) {
   return storage;
 }
 
-export const authStorage = createStorage('wendy_auth_token');
+export const tokenStorage = createStorage('wendy_auth_token');
 export const loginInfoStorage = createStorage('wendy_login_info');
