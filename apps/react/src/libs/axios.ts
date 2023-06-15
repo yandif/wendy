@@ -1,7 +1,7 @@
 import { API_URL, CodeEnum } from '@/config';
 import { ResponeData } from '@/services';
 import { notification } from 'antd';
-import axios from 'axios';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 import { authStorage } from '@/utils/storages';
 import { unCompile } from '@/utils/tool';
 import { historyStore } from '@/stores/history';
@@ -48,7 +48,8 @@ instance.interceptors.response.use(
 
     return Promise.resolve(data);
   },
-  (error) => {
+  (error: AxiosError) => {
+    notification.error({ key: error.message, message: error.message });
     return Promise.reject(error);
   },
 );

@@ -101,7 +101,7 @@ export default function Background({
             const c = Math.round(
               (dots[k].color + dots[k1].color + dots[k2].color) / 3,
             );
-            ctx.fillStyle = `rgb(${Math.round(c / 1.3)},6,${c})`;
+            ctx.fillStyle = `rgb(6, ${Math.round(c / 1.3)},${c})`;
             ctx.fill();
           }
           if (i > 0) {
@@ -113,7 +113,7 @@ export default function Background({
             const c = Math.round(
               (dots[k].color + dots[k1].color + dots[k3].color) / 3,
             );
-            ctx.fillStyle = `rgb( ${Math.round(c / 1.3)},6,${c})`;
+            ctx.fillStyle = `rgb(6, ${Math.round(c / 1.3)},${c})`;
             ctx.fill();
           }
         }
