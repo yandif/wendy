@@ -1,4 +1,4 @@
-import { User, authStore } from '@/stores/auth';
+import { User, userStore } from '@/stores/auth';
 import { historyStore } from '@/stores/history';
 import { ListenerFn } from '@legendapp/state';
 import { useEffect } from 'react';
@@ -19,6 +19,6 @@ export function useListener() {
     !params.value && nav('/auth/login');
 
   useEffect(() => {
-    return authStore.onChange(handleAuthChange);
+    return userStore.onChange(handleAuthChange);
   });
 }

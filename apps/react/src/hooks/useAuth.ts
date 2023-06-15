@@ -1,7 +1,7 @@
 import { CodeEnum } from '@/config';
 import { Account } from '@/services';
-import { authStore } from '@/stores/auth';
-import { authStorage } from '@/utils/storages';
+import { userStore } from '@/stores/auth';
+import { tokenStorage } from '@/utils/storages';
 import { useEffect } from 'react';
 import { NavigateOptions, Path, useNavigate } from 'react-router-dom';
 
@@ -15,17 +15,17 @@ export const useAuth = (
   const nav = useNavigate();
 
   const getUserInfo = async () => {
-    const token = authStorage.get();
+    const token = tokenStorage.get();
     if (token) {
       const res = await Account.getUserInfo();
       if (res.code === CodeEnum.SUCCESS) {
-        authStore.set(res.data);
+        userStore.set(res.data);
       }
     }
   };
 
   useEffect(() => {
-    if (!authStore.get()) {
+    if (!userStore.get()) {
       getUserInfo();
     } else {
       if (props?.to) {
