@@ -1,0 +1,16 @@
+.admin-footer {
+  text-align: center;
+  padding: 16px !important;
+  height: 48px;
+  flex: none;
+}
+.admin-footer a:hover {
+  text-decoration: underline;
+}
+.admin-footer.white {
+  width: 100%;
+  background-color: transparent;
+  color: #ddd;
+  font-size: 12px;
+  z-index: 2;
+}

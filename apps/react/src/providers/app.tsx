@@ -16,10 +16,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     <Suspense fallback="">
       <ErrorBoundary
         FallbackComponent={() => (
-          <button
-            onClick={() => window.location.assign(window.location.origin)}>
-            Refresh
-          </button>
+          <button onClick={() => location.reload()}>Refresh</button>
         )}>
         <HelmetProvider>
           <QueryClientProvider client={queryClient}>
