@@ -1,19 +1,24 @@
-import { Account } from '@/services';
-import { authStore } from '@/stores/auth';
-import { authStorage } from '@/utils/storages';
+import { Head } from '@/components/Head';
+import { adminStore } from '@/stores/admin';
+import { Button } from 'antd';
 
 export const Home = () => {
   return (
     <div>
-      <h1>admin</h1>
-      <button
-        onClick={async () => {
-          Account.logout();
-          authStorage.clear();
-          authStore.delete();
-        }}>
-        logout
-      </button>
+      <Head title="首页" />
+      <h1>Home</h1>
+      <Button onClick={() => adminStore.hideFooter.set((v) => !v)}>
+        hideFooter
+      </Button>
+      <Button onClick={() => adminStore.hideHeader.set((v) => !v)}>
+        hideHeader
+      </Button>
+      <Button onClick={() => adminStore.hideBread.set((v) => !v)}>
+        hideBread
+      </Button>
+      <Button onClick={() => adminStore.hideSidebar.set((v) => !v)}>
+        hideSidebar
+      </Button>
     </div>
   );
 };

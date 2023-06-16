@@ -20,18 +20,19 @@ export function unCompile(code: string) {
   return c;
 }
 
-type TreeNode = {
+type TreeInput = {
   id: number;
   parent?: number;
-  children?: TreeNode[];
 };
 
 /**
  * 把数据转为树形数据
  */
-export function flatToTree<T extends TreeNode>(data: T[]) {
-  const map: Record<number, TreeNode & T> = {};
-  const treeData: (TreeNode & T)[] = [];
+export function flatToTree<T extends TreeInput>(data: T[]) {
+  type TreeNode = TreeInput & T & { children?: T[] };
+
+  const map: Record<number, TreeNode> = {};
+  const treeData: TreeNode[] = [];
 
   for (const item of data) {
     const node = {
