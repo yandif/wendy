@@ -4,7 +4,7 @@
   "description": "...",
   "scripts": {
     "build": "pnpm --stream -r run build",
-    "commit": "git-cz"
+    "commit": "git-cz && git push"
   },
   "devDependencies": {
     "commitizen": "^4.3.0",

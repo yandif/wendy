@@ -1,10 +1,11 @@
-import { API_URL, CodeEnum } from '@/config';
+import { API_URL } from '@/config';
+import { CodeEnum } from '@/constant';
 import { ResponeData } from '@/services';
-import { notification } from 'antd';
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import { historyStore } from '@/stores/history';
 import { tokenStorage } from '@/utils/storages';
 import { unCompile } from '@/utils/tool';
-import { historyStore } from '@/stores/history';
+import { notification } from 'antd';
+import axios, { AxiosError } from 'axios';
 
 const instance = axios.create({
   baseURL: API_URL,
