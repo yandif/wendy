@@ -1,4 +1,4 @@
-import { CodeEnum } from '@/config';
+import { CodeEnum } from '@/constant';
 import { Account } from '@/services';
 import { userStore } from '@/stores/auth';
 import { tokenStorage } from '@/utils/storages';

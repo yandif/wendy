@@ -1,5 +1,5 @@
 import LogoImg from '@/assets/img/logo.png';
-import { CodeEnum } from '@/config';
+import { CodeEnum } from '@/constant';
 import { Account } from '@/services';
 import { userStore } from '@/stores/auth';
 import { progressStore } from '@/stores/progress';

@@ -1,4 +1,4 @@
-import { CodeEnum } from '@/config';
+import { CodeEnum } from '@/constant';
 import { del, get, patch, post } from '@/libs/axios';
 import qs from 'query-string';
 
