@@ -47,8 +47,7 @@ export function flatToTree<T extends TreeInput>(data: T[]) {
     if (item.parent === undefined) {
       treeData.push(node);
     } else {
-      const parent = map[item.parent];
-      parent.children?.push(node);
+      map[item.parent]?.children?.push(node);
     }
   }
 
