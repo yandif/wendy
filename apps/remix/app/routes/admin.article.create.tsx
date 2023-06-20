@@ -24,7 +24,7 @@ import {
   setErrorMessage,
   setSuccessMessage,
 } from '~/server/middleware/message.server';
-// import EngineDemo from '@wendy/mantine-tiptap';
+// import EngineDemo from 'wendy-tiptap';
 import { UploadImage } from '~/web/components/Upload/ImgUpload';
 import { useTitle } from '~/web/hooks/useTitle';
 

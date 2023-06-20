@@ -11,5 +11,5 @@ module.exports = {
   // future: {
   //   v2_routeConvention: true,
   // },
-  serverDependenciesToBundle: ['@wendy/mantine-tiptap'],
+  serverDependenciesToBundle: ['wendy-tiptap'],
 };
