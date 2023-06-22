@@ -8,7 +8,7 @@ const useDebounce = (errorMessage: string) => {
     try {
       await fn();
     } catch (e) {
-      console.log(errorMessage, e);
+      console.error(errorMessage, e);
     }
     setIsLoading(false);
   };

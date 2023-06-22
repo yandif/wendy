@@ -5,13 +5,12 @@ import { tokenStorage } from '@/utils/storages';
 import { useEffect } from 'react';
 import { NavigateOptions, Path, useNavigate } from 'react-router-dom';
 
-export const useAuth = (
-  props?: {
-    to: string | Partial<Path>;
-    options?: NavigateOptions;
-  },
-  deps?: React.DependencyList,
-) => {
+type UseAuthInput = {
+  to: string | Partial<Path>;
+  options?: NavigateOptions;
+};
+
+export const useAuth = (props?: UseAuthInput, deps?: React.DependencyList) => {
   const nav = useNavigate();
 
   const getUserInfo = async () => {
