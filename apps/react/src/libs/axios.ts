@@ -1,7 +1,7 @@
 import { API_URL } from '@/config';
 import { CodeEnum } from '@/constant';
 import { ResponeData } from '@/services';
-import { historyStore } from '@/stores/history';
+import { historyStore } from '@/stores';
 import { tokenStorage } from '@/utils/storages';
 import { unCompile } from '@/utils/tool';
 import { notification } from 'antd';

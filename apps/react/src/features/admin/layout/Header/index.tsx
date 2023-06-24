@@ -1,8 +1,7 @@
 import './index.css';
 
 import useFullScreen from '@/hooks/useFullScreen';
-import { adminStore } from '@/stores/admin';
-import { userStore } from '@/stores/auth';
+import { adminStore, userStore } from '@/stores';
 import { tokenStorage } from '@/utils/storages';
 import {
   FullscreenExitOutlined,

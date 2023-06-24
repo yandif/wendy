@@ -1,4 +1,4 @@
-import { menuStore } from '@/stores/menu';
+import { menuStore } from '@/stores';
 import { EnvironmentOutlined } from '@ant-design/icons';
 import { Breadcrumb } from 'antd';
 import { useMemo } from 'react';

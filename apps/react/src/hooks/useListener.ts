@@ -1,5 +1,4 @@
-import { User, userStore } from '@/stores/auth';
-import { historyStore } from '@/stores/history';
+import { User, historyStore, userStore } from '@/stores';
 import { ListenerFn } from '@legendapp/state';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';

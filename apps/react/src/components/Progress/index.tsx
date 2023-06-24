@@ -1,4 +1,4 @@
-import { progressStore } from '@/stores/progress';
+import { progressStore } from '@/stores';
 import { observer } from '@legendapp/state/react';
 import { FC } from 'react';
 import IProgress from './Progress';

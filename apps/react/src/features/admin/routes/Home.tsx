@@ -1,5 +1,5 @@
 import { Head } from '@/components/Head';
-import { adminStore } from '@/stores/admin';
+import { adminStore } from '@/stores';
 import { Button } from 'antd';
 
 export const Home = () => {

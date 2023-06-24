@@ -2,7 +2,7 @@ import './index.less';
 
 import Background from '@/components/Background';
 import { useAuth } from '@/hooks/useAuth';
-import { userStore } from '@/stores/auth';
+import { userStore } from '@/stores';
 import { tokenStorage } from '@/utils/storages';
 import { observer } from '@legendapp/state/react';
 import LoginForm from '../../components/LoginForm';

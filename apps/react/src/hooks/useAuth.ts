@@ -1,6 +1,6 @@
 import { CodeEnum } from '@/constant';
 import { Account } from '@/services';
-import { userStore } from '@/stores/auth';
+import { userStore } from '@/stores';
 import { tokenStorage } from '@/utils/storages';
 import { useEffect } from 'react';
 import { NavigateOptions, Path, useNavigate } from 'react-router-dom';

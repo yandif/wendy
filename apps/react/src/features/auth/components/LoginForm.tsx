@@ -1,9 +1,8 @@
 import LogoImg from '@/assets/img/logo.png';
 import { CodeEnum } from '@/constant';
 import { Account } from '@/services';
-import { userStore } from '@/stores/auth';
-import { progressStore } from '@/stores/progress';
-import { tokenStorage, loginInfoStorage } from '@/utils/storages';
+import { progressStore, userStore } from '@/stores';
+import { loginInfoStorage, tokenStorage } from '@/utils/storages';
 import { compile, unCompile } from '@/utils/tool';
 import { KeyOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, notification } from 'antd';

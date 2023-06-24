@@ -1,4 +1,4 @@
-import { adminStore } from '@/stores/admin';
+import { adminStore } from '@/stores';
 import { observer } from '@legendapp/state/react';
 import { Layout } from 'antd';
 import { Outlet } from 'react-router-dom';

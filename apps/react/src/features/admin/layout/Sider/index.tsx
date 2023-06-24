@@ -1,7 +1,6 @@
 import ImgLogo from '@/assets/img/logo.png';
 import Icon from '@/components/Icon';
-import { adminStore } from '@/stores/admin';
-import { menuStore } from '@/stores/menu';
+import { adminStore, menuStore } from '@/stores';
 import { flatToTree } from '@/utils/tool';
 import { observer } from '@legendapp/state/react';
 import { Layout, Menu, MenuProps } from 'antd';
