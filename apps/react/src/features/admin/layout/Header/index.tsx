@@ -5,17 +5,15 @@ import { adminStore } from '@/stores/admin';
 import { userStore } from '@/stores/auth';
 import { tokenStorage } from '@/utils/storages';
 import {
-  ChromeOutlined,
   FullscreenExitOutlined,
   FullscreenOutlined,
-  GithubOutlined,
   LogoutOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   SmileOutlined,
 } from '@ant-design/icons';
 import { observer } from '@legendapp/state/react';
-import { Button, Dropdown, Layout, Menu, Tooltip, notification } from 'antd';
+import { Dropdown, Layout, Menu, Tooltip, notification } from 'antd';
 import { FC, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
