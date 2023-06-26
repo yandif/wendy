@@ -13,7 +13,7 @@ type AppProviderProps = {
 
 export const AppProvider = ({ children }: AppProviderProps) => {
   return (
-    <Suspense fallback="">
+    <Suspense fallback="加载中">
       <ErrorBoundary
         FallbackComponent={() => (
           <button onClick={() => location.reload()}>Refresh</button>
