@@ -1,10 +1,16 @@
 import { FC, ReactNode } from 'react';
 
-const Container: FC<{
+type ContainerProps = {
   animationDuration: number;
   isFinished: boolean;
   children: ReactNode;
-}> = ({ animationDuration, children, isFinished }) => (
+};
+
+const Container: FC<ContainerProps> = ({
+  animationDuration,
+  children,
+  isFinished,
+}) => (
   <div
     style={{
       opacity: isFinished ? 0 : 1,

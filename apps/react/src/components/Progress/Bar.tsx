@@ -1,10 +1,12 @@
 import { FC } from 'react';
 
-const Bar: FC<{
+type BarProps = {
   animationDuration: number;
   progress: number;
   color: string;
-}> = ({ animationDuration, progress, color }) => (
+};
+
+const Bar: FC<BarProps> = ({ animationDuration, progress, color }) => (
   <div
     style={{
       background: color,

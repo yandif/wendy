@@ -1,8 +1,10 @@
 import { FC } from 'react';
 
-const Spinner: FC<{
+type SpinnerProps = {
   color: string;
-}> = ({ color }) => (
+};
+
+const Spinner: FC<SpinnerProps> = ({ color }) => (
   <div
     style={{
       display: 'block',
