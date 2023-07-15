@@ -4,7 +4,7 @@ const VirtualScroll = () => {
   return (
     <div>
       <VList style={{ height: 'calc(100vh - 32px)', width: 500 }}>
-        {Array.from({ length: 1000000 }).map((_, i) => (
+        {Array.from({ length: 10000 }).map((_, i) => (
           <div
             key={i}
             style={{
