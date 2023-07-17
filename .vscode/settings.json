@@ -6,6 +6,7 @@
   "editor.renderWhitespace": "none",
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.fontSize": 14,
+  "terminal.integrated.fontSize": 14,
   "workbench.productIconTheme": "Default",
   "editor.tokenColorCustomizations": { "comments": "#17e917" },
   "editor.fontLigatures": true,
