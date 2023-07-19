@@ -5,3 +5,4 @@ dist
 lib
 .env
 apps/remix/public/img
+demos/research/CSS-in-JS-RSC/panda/styled-system
