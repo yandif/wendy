@@ -10,6 +10,7 @@ const styles = css({
   paddingY: '24px',
   bg: 'red.300',
 });
+
 const Card = ({ className, ...props }: { className: string }) => {
   // 先创建的样式会被覆盖
   const rootClassName = cx(className, styles2, styles);
