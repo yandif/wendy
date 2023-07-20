@@ -21,4 +21,7 @@ export default defineConfig({
 
   // 散列样式名(有问题回头再看)
   // hash: true,
+
+  jsxFramework: 'react',
+  jsxFactory: 'panda',
 });
