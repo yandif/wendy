@@ -176,8 +176,11 @@ export const Demo05 = () => {
       <button className={ibutton({ shape: 'circle' })}>Click me</button>
 
       <p>
-        在配置中创建的食谱有一个特殊功能；它们可以根据特定的断点或条件来应用。
+        在配置中创建的食谱有一个特殊功能；它们可以根据特定的断点或条件来应用。在大多数情况下，我们不建议内联应用条件变体。理想情况下，您可能希望为响应断点呈现不同的视图。
       </p>
+      <button className={ibutton({ size: { base: 'sm', md: 'lg' } })}>
+        Click me
+      </button>
     </div>
   );
 };
