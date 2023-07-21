@@ -266,12 +266,21 @@ importers:
 
   demos/learn-lib:
     dependencies:
+      dayjs:
+        specifier: ^1.11.9
+        version: 1.11.9
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
       react:
         specifier: ^18.2.0
         version: 18.2.0
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      ts-pattern:
+        specifier: ^5.0.4
+        version: 5.0.4
     devDependencies:
       '@types/react':
         specifier: ^18.2.15
@@ -14264,6 +14273,10 @@ packages:
   /ts-pattern@5.0.1:
     resolution: {integrity: sha512-ZyNm28Lsg34Co5DS3e9DVyjlX2Y+2exkI4jqTKyU+9/OL6Y2fKOOuL8i+7no71o74C6mVS+UFoP3ekM3iCT1HQ==}
     dev: true
+
+  /ts-pattern@5.0.4:
+    resolution: {integrity: sha512-D5iVliqugv2C9541W2CNXFYNEZxr4TiHuLPuf49tKEdQFp/8y8fR0v1RExUvXkiWozKCwE7zv07C6EKxf0lKuQ==}
+    dev: false
 
   /tsconfck@2.1.2(typescript@5.1.6):
     resolution: {integrity: sha512-ghqN1b0puy3MhhviwO2kGF8SeMDNhEbnKxjK7h6+fvY9JAxqvXi8y5NAHSQv687OVboS2uZIByzGd45/YxrRHg==}
