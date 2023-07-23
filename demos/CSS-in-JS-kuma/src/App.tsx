@@ -12,7 +12,7 @@ function App() {
   return (
     <div>
       <div>
-        {ComponentArr.map((v, _i) => {
+        {ComponentArr.map((_v, _i) => {
           return (
             <button key={_i} onClick={() => setI(_i)}>
               Demo{_i + 1}

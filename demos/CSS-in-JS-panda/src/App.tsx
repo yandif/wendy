@@ -14,7 +14,7 @@ function App() {
   return (
     <div>
       <div className={css({ p: '16px' })}>
-        {ComponentArr.map((v, _i) => {
+        {ComponentArr.map((_v, _i) => {
           return (
             <button
               key={_i}
