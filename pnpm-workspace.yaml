@@ -1,5 +1,10 @@
 packages:
+  # 文件夹下一级的所有文件夹
   - apps/*
   - demos/*
   - packages/*
   - server/*
+  # 文件夹下的所有子文件夹
+  # - 'components/**'
+  # 排除所有的 _template 文件夹
+  # - '!**/_template/**'
