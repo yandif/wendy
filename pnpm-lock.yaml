@@ -364,6 +364,9 @@ importers:
 
   demos/learn-lib:
     dependencies:
+      classnames:
+        specifier: ^2.3.2
+        version: 2.3.2
       dayjs:
         specifier: ^1.11.9
         version: 1.11.9

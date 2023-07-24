@@ -1,4 +1,4 @@
-import { Demo01 } from './dayjs/Demo01';
+import { Demo01 } from './lib/dayjs/Demo01';
 
 const App = () => {
   return (
