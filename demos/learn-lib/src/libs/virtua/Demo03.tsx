@@ -3,7 +3,7 @@ import { VGrid } from 'virtua';
 
 export const Demo03 = () => {
   return (
-    <Chrome center={false} tall label="水平滚动">
+    <Chrome center={false} tall label="水平滚动与垂直滚动">
       <div className="px-60">
         <VGrid style={{ height: 400 }} row={1000} col={500}>
           {({ rowIndex, colIndex }) => (
