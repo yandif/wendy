@@ -1,10 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import { createContext, useContext, useEffect, useRef } from 'react';
+import { createContext, useEffect, useRef } from 'react';
 import cn from 'classnames';
-const ChromeContext = createContext();
 
-export const useChromeContext = () => useContext(ChromeContext);
+export const ChromeContext = createContext();
 
 export const Chrome = ({
   children,
