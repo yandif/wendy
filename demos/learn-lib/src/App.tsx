@@ -4,14 +4,15 @@ import { demos } from './demo';
 import './libs/dayjs';
 import './libs/lodash';
 import './libs/ts-pattern';
+import './libs/virtua';
 
 const App = () => {
   const [title, setTitle] = useState(demos[0].title);
   const { component: Component } = demos.find((v) => v.title === title)!;
 
   return (
-    <div className="flex bg-gray-50 h-[100vh] overflow-auto">
-      <div className="w-[300px] p-6 pr-0">
+    <div className="flex bg-gray-50 h-[100vh] overflow-hidden">
+      <div className="w-[300px] h-[100vh] overflow-auto p-6 pr-0">
         {demos.map((v) => {
           return (
             <div
@@ -32,7 +33,7 @@ const App = () => {
           );
         })}
       </div>
-      <div className="flex-1 p-6">
+      <div className="flex-1 p-6 h-[100vh] overflow-auto">
         <Component />
       </div>
     </div>

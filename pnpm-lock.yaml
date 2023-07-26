@@ -330,6 +330,9 @@ importers:
       ts-pattern:
         specifier: ^5.0.4
         version: 5.0.4
+      virtua:
+        specifier: ^0.4.4
+        version: 0.4.4(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@types/react':
         specifier: ^18.2.15
@@ -15042,6 +15045,16 @@ packages:
 
   /virtua@0.4.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-kMf6mOVfrBxS6pm3lo/O/Gcce9sq90W4EYQ+MBNlFI9mFwktM0m1v3nX2U12QljmLfLyE/cCtFiyYR2euPa38w==}
+    peerDependencies:
+      react: '>=16.14.0'
+      react-dom: '>=16.14.0'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /virtua@0.4.4(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-qp+sK5SnmKmbLX2IjNg/vNOqXxLXyF+gmwDmgZzFqDGR9mCWOVcomyqrSHAufp14eXBRvtQUFujN3ogPeHG49Q==}
     peerDependencies:
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
