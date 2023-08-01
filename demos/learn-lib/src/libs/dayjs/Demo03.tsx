@@ -4,6 +4,18 @@ import duration from 'dayjs/plugin/duration';
 import utc from 'dayjs/plugin/utc';
 import { Chrome } from '../../components/Chrome';
 import { DATE_TIME_FORMAT } from './constant';
+import {
+  getFirstDayOfYear,
+  getLastDayOfYear,
+  getFirstDayOfQuarter,
+  getLastDayOfQuarter,
+  getFirstDayOfMonth,
+  getLastDayOfMonth,
+  getFirstDayOfWeek,
+  getLastDayOfWeek,
+  getFirstSecondOfDay,
+  getLastSecondOfDay,
+} from './utils';
 
 dayjs.extend(duration);
 dayjs.extend(utc);
@@ -42,6 +54,46 @@ export const Demo03 = () => {
       value: (() => {
         return <>{dayjs.utc().local().format(DATE_TIME_FORMAT)}</>;
       })(),
+    },
+    {
+      title: '一年的第一天',
+      value: getFirstDayOfYear(),
+    },
+    {
+      title: '一年的最后一天',
+      value: getLastDayOfYear(),
+    },
+    {
+      title: '一季度的第一天',
+      value: getFirstDayOfQuarter(),
+    },
+    {
+      title: '一季度的最后一天',
+      value: getLastDayOfQuarter(),
+    },
+    {
+      title: '一月的第一天',
+      value: getFirstDayOfMonth(),
+    },
+    {
+      title: '一月的最后一天',
+      value: getLastDayOfMonth(),
+    },
+    {
+      title: '一周的第一天',
+      value: getFirstDayOfWeek(),
+    },
+    {
+      title: '一周的最后一天',
+      value: getLastDayOfWeek(),
+    },
+    {
+      title: '一天的第一秒',
+      value: getFirstSecondOfDay(),
+    },
+    {
+      title: '一天的最后一秒',
+      value: getLastSecondOfDay(),
     },
   ];
 
