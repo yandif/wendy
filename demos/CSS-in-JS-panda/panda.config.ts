@@ -26,6 +26,7 @@ export const buttonRecipe = defineRecipe({
     size: 'sm',
     shape: 'circle',
   },
+  jsx: ['Button', 'PageButton'],
 });
 
 export default defineConfig({
@@ -40,6 +41,24 @@ export default defineConfig({
 
   // Useful for theme customization
   theme: {
+    tokens: {
+      colors: {
+        red: { value: '#EE0F0F' },
+        green: { value: '#0FEE0F' },
+      },
+    },
+    semanticTokens: {
+      colors: {
+        colors: {
+          danger: {
+            value: { base: '{colors.red}', _dark: '{colors.darkred}' },
+          },
+          success: {
+            value: { base: '{colors.green}', _dark: '{colors.darkgreen}' },
+          },
+        },
+      },
+    },
     extend: {
       recipes: {
         button: buttonRecipe,

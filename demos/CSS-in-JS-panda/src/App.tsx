@@ -5,8 +5,10 @@ import { Demo02 } from './demo/Demo02';
 import { Demo03 } from './demo/Demo03';
 import { Demo04 } from './demo/Demo04';
 import { Demo05 } from './demo/Demo05';
+import { Demo06 } from './demo/Demo06';
+import { Demo07 } from './demo/Demo07';
 
-const ComponentArr = [Demo01, Demo02, Demo03, Demo04, Demo05];
+const ComponentArr = [Demo01, Demo02, Demo03, Demo04, Demo05, Demo06, Demo07];
 
 function App() {
   const [i, setI] = useState(0);

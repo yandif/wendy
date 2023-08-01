@@ -181,6 +181,28 @@ export const Demo05 = () => {
       <button className={ibutton({ size: { base: 'sm', md: 'lg' } })}>
         Click me
       </button>
+
+      <p>
+        每个配方都为其可接受的变体提供了一个类型接口。您可以从
+        styled-system/recipes 入口点导入它们
+      </p>
+      <pre>
+        {`
+        import type { ButtonVariants } from '../styled-system/recipes'
+ 
+        type ButtonProps = ButtonVariants & {
+          children: React.ReactNode
+        }
+        `}
+      </pre>
+
+      <div>
+        尽可能利用基本样式中的 css 变量。使使用 JS 为组件设置主题变得更容易
+        <br />
+        不要通过编写复杂的选择器来混合样式。分离关注点并将它们分组为逻辑变体
+        <br />
+        属性创建更复杂的样式集
+      </div>
     </div>
   );
 };
