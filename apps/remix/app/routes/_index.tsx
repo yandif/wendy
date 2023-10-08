@@ -1,17 +1,19 @@
-import { Link } from '@remix-run/react';
-import type { FC } from 'react';
+import type { MetaFunction } from "@remix-run/node";
+import { Welcome } from "~/components/Welcome/Welcome";
+import { ColorSchemeToggle } from "~/components/ColorSchemeToggle/ColorSchemeToggle";
 
-const Index: FC = () => {
-  return (
-    <div>
-      <h1>Home</h1>
-      <Link to="admin">管理端</Link>
-      <br />
-      <Link to="blog">博客</Link>
-      <br />
-      <Link to="demo">Demo</Link>
-    </div>
-  );
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Mantine Remix App" },
+    { name: "description", content: "Welcome to Mantine!" },
+  ];
 };
 
-export default Index;
+export default function Index() {
+  return (
+    <div>
+      <Welcome />
+      <ColorSchemeToggle />
+    </div>
+  );
+}

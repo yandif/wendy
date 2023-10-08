@@ -3,7 +3,7 @@ packages:
   - apps/*
   - demos/*
   - packages/*
-  - server/*
+  - servers/*
   # 文件夹下的所有子文件夹
   # - 'components/**'
   # 排除所有的 _template 文件夹
