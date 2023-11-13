@@ -259,6 +259,9 @@ importers:
       '@mantine/hooks':
         specifier: 7.2.0
         version: 7.2.0(react@18.2.0)
+      '@prisma/client':
+        specifier: ^5.5.2
+        version: 5.5.2(prisma@5.5.2)
       '@remix-run/css-bundle':
         specifier: ^2.2.0
         version: 2.2.0
@@ -271,15 +274,30 @@ importers:
       '@remix-run/serve':
         specifier: ^2.2.0
         version: 2.2.0(typescript@5.2.2)
+      '@types/crypto-js':
+        specifier: ^4.2.1
+        version: 4.2.1
+      '@types/lodash':
+        specifier: ^4.14.200
+        version: 4.14.200
+      crypto-js:
+        specifier: ^4.2.0
+        version: 4.2.0
       isbot:
         specifier: ^3.7.0
         version: 3.7.0
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
       react:
         specifier: ^18.2.0
         version: 18.2.0
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      remix-auth:
+        specifier: ^3.6.0
+        version: 3.6.0(@remix-run/react@2.2.0)(@remix-run/server-runtime@2.2.0)
     devDependencies:
       '@remix-run/dev':
         specifier: ^2.2.0
@@ -293,6 +311,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.14
         version: 18.2.14
+      cross-env:
+        specifier: ^7.0.3
+        version: 7.0.3
       eslint:
         specifier: ^8.53.0
         version: 8.53.0
@@ -305,6 +326,9 @@ importers:
       postcss-simple-vars:
         specifier: ^7.0.1
         version: 7.0.1(postcss@8.4.31)
+      prisma:
+        specifier: ^5.5.2
+        version: 5.5.2
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
