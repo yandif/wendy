@@ -5,6 +5,7 @@ import './libs/dayjs';
 import './libs/lodash';
 import './libs/ts-pattern';
 import './libs/virtua';
+import './libs/zustand';
 
 const App = () => {
   const [title, setTitle] = useState(demos[0].title);
