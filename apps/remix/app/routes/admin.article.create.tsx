@@ -69,8 +69,7 @@ export default function CreateArticle() {
 
     validate: {
       title: (value) => (value?.length === 0 ? '请输入文章标题' : null),
-      content: (value) =>
-        value?.length === 0 || value === '<p></p>' ? '请输入文章内容' : null,
+      content: (value) => (value?.length === 0 || value === '<p></p>' ? '请输入文章内容' : null),
       // cover: (value) => {
       //   return !value?.id ? '请上传封面' : null;
       // },
@@ -123,13 +122,11 @@ export default function CreateArticle() {
     label: string;
   }
 
-  const TagItem = forwardRef<HTMLDivElement, ItemProps>(
-    ({ label, ...others }: ItemProps, ref) => (
-      <div ref={ref} {...others}>
-        {label}
-      </div>
-    ),
-  );
+  const TagItem = forwardRef<HTMLDivElement, ItemProps>(({ label, ...others }: ItemProps, ref) => (
+    <div ref={ref} {...others}>
+      {label}
+    </div>
+  ));
   /** 选择标签👆 */
 
   const handleEdit = async () => {
@@ -137,8 +134,7 @@ export default function CreateArticle() {
     if (
       form.values.title === article.title &&
       form.values.content === article.content &&
-      form.values.tag.toString() ===
-        (article as any)?.tag.map((v: Tag) => `${v.id}`).toString() &&
+      form.values.tag.toString() === (article as any)?.tag.map((v: Tag) => `${v.id}`).toString() &&
       form.values.cover?.id === article.cover?.id
     ) {
       return;
@@ -196,20 +192,14 @@ export default function CreateArticle() {
       form.setFieldValue('cover', imgFetcher.data.data);
     }
   }, [imgFetcher.data]);
-  const coverSrc = form.values.cover?.name
-    ? `/img/${form.values.cover?.name}`
-    : undefined;
+  const coverSrc = form.values.cover?.name ? `/img/${form.values.cover?.name}` : undefined;
 
   return (
     <Grid>
       <Grid.Col xs={8}>
         <Container className={classes.main}>
           <fetcher.Form>
-            <Input.Wrapper
-              pb="md"
-              required
-              label="内容"
-              {...form.getInputProps('content')}>
+            <Input.Wrapper pb="md" required label="内容" {...form.getInputProps('content')}>
               <textarea {...form.getInputProps('content')}></textarea>
               {/* <EngineDemo
                 placeholder="文章内容"
@@ -290,9 +280,7 @@ export default function CreateArticle() {
           </Input.Wrapper>
         </Container>
         <Container mt={16} className={classes.main}>
-          <Button onClick={article ? handleEdit : handleCreate}>
-            {article ? '保存' : '提交'}
-          </Button>
+          <Button onClick={article ? handleEdit : handleCreate}>{article ? '保存' : '提交'}</Button>
         </Container>
       </Grid.Col>
     </Grid>

@@ -1,18 +1,6 @@
-import {
-  Box,
-  Button,
-  Center,
-  Group,
-  Paper,
-  PasswordInput,
-  TextInput,
-} from '@mantine/core';
+import { Box, Button, Center, Group, Paper, PasswordInput, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import type {
-  ActionFunction,
-  LoaderFunction,
-  MetaFunction,
-} from '@remix-run/node';
+import type { ActionFunction, LoaderFunction, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
 import { Form, Link, useActionData } from '@remix-run/react';
 import { useEffect, useRef } from 'react';
@@ -23,10 +11,7 @@ import useThemeStore from '~/web/stores/theme';
 export { CatchBoundary, ErrorBoundary } from '~/web/components/Remix';
 
 export const meta: MetaFunction = () => {
-  return {
-    title: '登录',
-    description: 'Yandif应用登录',
-  };
+  return [{ title: '登录', description: 'Yandif应用登录' }];
 };
 
 export type LoaderData = {
@@ -123,9 +108,7 @@ export default function Login() {
             {...form.getInputProps('password')}
           />
           <Group position="apart" mt="md">
-            <Link
-              style={{ textDecoration: 'none', color: '#777' }}
-              to="/signup">
+            <Link style={{ textDecoration: 'none', color: '#777' }} to="/signup">
               还没有账号？去注册
             </Link>
 

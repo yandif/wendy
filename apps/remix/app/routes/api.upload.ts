@@ -1,8 +1,5 @@
 import type { ActionFunction } from '@remix-run/node';
-import {
-  unstable_createFileUploadHandler,
-  unstable_parseMultipartFormData,
-} from '@remix-run/node';
+import { unstable_createFileUploadHandler, unstable_parseMultipartFormData } from '@remix-run/node';
 
 import { db } from '~/server/database/db.server';
 import { checkAuth } from '~/server/middleware/auth.server';
@@ -16,10 +13,7 @@ export const action: ActionFunction = async ({ request }) => {
     // file: ({ filename }) => filename,
     maxPartSize: 5_000_000,
   });
-  const formData = await unstable_parseMultipartFormData(
-    request,
-    uploadHandler,
-  );
+  const formData = await unstable_parseMultipartFormData(request, uploadHandler);
   const image = formData.get('img') as any;
 
   if (!image) {
