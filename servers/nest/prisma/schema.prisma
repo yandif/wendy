@@ -22,6 +22,8 @@ model Account {
   role         Role[]
   loginlog     Loginlog[]
   AccountToken AccountToken?
+
+  @@map("account")
 }
 
 model AccountToken {
@@ -50,6 +52,8 @@ model Role {
   isDefault   Int?      @default(0) @map("is_default")
   account     Account[]
   access      Access[]
+
+  @@map("role")
 }
 
 model Access {
@@ -71,6 +75,8 @@ model Access {
   parent      Access    @relation("AccessToAccess", fields: [parentId], references: [id])
   parentId    Int       @map("parent_id")
   chrildren   Access[]  @relation("AccessToAccess")
+
+  @@map("access")
 }
 
 model Loginlog {
@@ -80,6 +86,8 @@ model Loginlog {
   date      DateTime @default(now())
   account   Account  @relation(fields: [accountId], references: [id])
   accountId Int      @map("account_id")
+
+  @@map("login_log")
 }
 
 model QueryCache {

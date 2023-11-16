@@ -11,7 +11,10 @@ const logger: Logger = new Logger('auth.guard')
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private readonly apiAuthService: ApiAuthService, private prisma: PrismaService) {}
+  constructor(
+    private readonly apiAuthService: ApiAuthService,
+    private prisma: PrismaService
+  ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     // if (Environment.isDevEnv) {

@@ -5,7 +5,7 @@ import { Admin } from '../src/main.config'
 const prisma = new PrismaClient()
 const tool = new Auth()
 async function main() {
-  const adminAccount = await prisma.account.upsert({
+  await prisma.account.upsert({
     where: { id: 1 },
     update: {
       username: Admin.defaultUsername,
@@ -21,7 +21,7 @@ async function main() {
 }
 
 main()
-  .catch((e) => {
+  .catch(() => {
     process.exit(1)
   })
   .finally(async () => {
