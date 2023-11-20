@@ -1,7 +1,6 @@
 packages:
   # 文件夹下一级的所有文件夹
   - apps/*
-  - demos/*
   - packages/*
   - servers/*
   # 文件夹下的所有子文件夹
