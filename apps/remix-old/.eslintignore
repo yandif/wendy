@@ -1,7 +1,0 @@
-./remix.config.js
-node_modules
-public
-build
-dist
-dist-ssr
-*.local
