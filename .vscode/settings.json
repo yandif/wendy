@@ -10,15 +10,9 @@
   "workbench.productIconTheme": "Default",
   "editor.tokenColorCustomizations": { "comments": "#17e917" },
   "editor.fontLigatures": true,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "vue",
-    "typescript",
-    "typescriptreact"
-  ],
+  "eslint.validate": ["javascript", "javascriptreact", "vue", "typescript", "typescriptreact"],
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "files.eol": "\n",
   "editor.formatOnSave": true,
